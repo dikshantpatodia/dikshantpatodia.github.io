@@ -24,6 +24,22 @@ border-top: 2px solid rgb(240,240,240);
 position: relative;
 }
 
+.quote {
+	margin-top: 40px;
+	height: auto;
+	width: 50%;
+	background-color: rgb(250,250,250);
+	color: rgb(30,30,30);
+	border-left: 10px solid rgb(240,240,240);
+	padding: 20px 10px 0px 10px;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 12px;
+	text-align: justify;
+	letter-spacing: 0.07em;
+	text-wrap: normal;
+}
+
 ul {
 margin: 0 0 0 15px;
 position: relative;
