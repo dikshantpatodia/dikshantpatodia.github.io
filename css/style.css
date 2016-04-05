@@ -46,6 +46,22 @@ position: relative;
 	text-wrap: normal;
 }
 
+.social {
+    padding: 10px;
+}
+
+.social ul {
+   margin: 0;
+   padding: 0;
+   text-align: center;
+}
+.social li {
+   font-size: 16px;
+   display: inline;
+   list-style: none;
+   padding: 10px 5px 10px 25px;
+}
+
 ul {
 margin: 0 0 0 15px;
 position: relative;
@@ -106,10 +122,6 @@ font-style: italic;
 
 ul#schools h4 {
 font-weight: bold;
-}
-
-.gap {
-margin-left: 30px;
 }
 
 h2.sectionHead {
@@ -407,7 +419,7 @@ text-align: center;
 font:bold 10px sans-serif;
 text-transform: uppercase;
 color: #aaa;
-margin: 20px 0 60px;
+margin: 20px 0 20px;
 text-shadow: 1px 1px 1px #fff;
 }
 
