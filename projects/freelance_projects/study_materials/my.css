@@ -1,0 +1,40 @@
+/*CSS used to make changes in the background, color, buttons etc.*/
+
+/*Index page wallpaper*/
+.full {
+  background: url(images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.head_1 {
+font-family: 'Allerta Stencil', sans-serif;
+}
+
+.container-fluid {
+margin-top: 18%;
+}
+
+.col-sm-12 {
+height: 150px;
+padding-top: 6px;
+}
+
+.module {
+font-weight: 900;
+}
+
+.tool_1 + .tooltip > .tooltip-inner {background-color: #5BC0DE;}
+.tool_1 + .tooltip > .tooltip-arrow { border-right-color: #5BC0DE; }
+
+.material {
+border: 1px solid black;
+border-radius: 5px;
+}
+
+.lefttop {
+margin-left: 0px;
+margin-top: 20px;
+}

@@ -1,0 +1,200 @@
+body {
+margin: 0px auto;
+}
+
+.block1 {
+width: 270px;
+height: 170px;
+border: 1px solid rgb(140,140,140);
+border-radius: 5px;
+text-align: center;
+}
+
+.google {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/google_b.png');
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 90%;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: background-image 500ms ease-out;
+}
+
+.google:hover {
+  background-image: url('../friendsnlogos/google_c.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.gmail {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/gmail_b.png');
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 90%;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: background-image 500ms ease-out;
+}
+
+.gmail:hover {
+  background-image: url('../friendsnlogos/gmail_c.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.youtube {
+  width: 150px;
+  height:150px;
+  background-image: url('../friendsnlogos/youtube_b.png');
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: 10px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: background-image 500ms ease-out;
+}
+
+.youtube:hover {
+  background-image: url('../friendsnlogos/youtube_c.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.facebook {
+  width: 150px;
+  height:150px;
+  background-image: url('../friendsnlogos/facebook_b.png');
+  background-repeat: no-repeat;
+  background-size: 88%;
+  background-position: 10px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: background-image 500ms ease-out;
+}
+
+.facebook:hover {
+  background-image: url('../friendsnlogos/facebook_c.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.twitter {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/twitter_b.png');
+  background-repeat: no-repeat;
+  background-size: 88%;
+  background-position: 10px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: background-image 500ms ease-out;
+}
+
+.twitter:hover {
+  background-image: url('../friendsnlogos/twitter_c.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.image1{
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/dikshant.jpg');
+  background-repeat: no-repeat;
+  background-size: 160%;
+  background-position: -80px -4px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: 300ms ease-out;
+}
+
+.image1:hover {	
+  background-image: url('../friendsnlogos/dikshant.jpg');
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: -15px 0px;
+  cursor: pointer;
+}
+
+.image2 {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/abhilash.jpg');
+  background-repeat: no-repeat;
+  background-size: 270%;
+  background-position: -120px -4px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 80px;
+  -webkit-transition: 300ms ease-out;
+}
+
+.image2:hover {
+  background-image: url('../friendsnlogos/abhilash.jpg');
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: -15px 0px;
+  cursor: pointer;
+}
+
+.image3 {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/shijo.jpg');
+  background-repeat: no-repeat;
+  background-size: 300%;
+  background-position: -190px -70px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: 300ms ease-out;
+}
+
+.image3:hover {
+  background-image: url('../friendsnlogos/shijo.jpg');
+  background-repeat: no-repeat;
+  background-size: 135%;
+  background-position: -15px 0px;
+  cursor: pointer;
+}
+
+.image4 {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/ashwini.jpg');
+  background-repeat: no-repeat;
+  background-size: 210%;
+  background-position: -60px -40px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: 300ms ease-out;
+}
+
+.image4:hover {
+  background-image: url('../friendsnlogos/ashwini.jpg');
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: -15px 0px;
+  cursor: pointer;
+}
+
+.image5 {
+  width: 150px;
+  height: 150px;
+  background-image: url('../friendsnlogos/tapas_samu.jpg');
+  background-repeat: no-repeat;
+  background-size: 240%;
+  background-position: -90px -10px;
+  border: 1px solid rgb(120,120,240);
+  border-radius: 180px;
+  -webkit-transition: 300ms ease-out;
+}
+
+.image5:hover {
+  background-image: url('../friendsnlogos/tapas_samu.jpg');
+  background-repeat: no-repeat;
+  background-size: 160%;
+  background-position: -40px 0px;
+  cursor: pointer;
+}
