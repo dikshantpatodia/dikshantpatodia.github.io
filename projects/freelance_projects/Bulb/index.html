@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script>
+		var myTimer;
+		var count = 0;
+		var per_unit_cost = 2.5;
+		var unit_counter = 0;
+		var total_bill = 0;
+		var base_bill = 50;
+		var total = 0;
+		function toggle() {
+			var status1 = document.getElementById("image");
+			var status2 = document.getElementById("switch");
+			if (status2.textContent == "Turn on") {
+				status2.textContent = "Turn off";
+				status1.src = "bulb_on.jpg";
+				document.getElementById("switch").style.backgroundColor = "rgb(250,50,50)";
+				var myInput4 = document.getElementById("bill");
+				myInput4.innerHTML = '';
+				document.getElementById("reset").disabled = false;
+				myCounter();
+			}
+			else if (status2.textContent == "Turn off") {
+				turnOff();
+			}
+		}
+		function turnOff() {
+			var status1 = document.getElementById("image");
+			var status2 = document.getElementById("switch");
+			status2.textContent = "Turn on";
+			status1.src = "bulb_off.jpg";
+			document.getElementById("switch").style.backgroundColor = "rgb(50,250,50)";
+			clearInterval(myTimer);
+		}
+		function myCounter() {
+			++count;
+			if (count == 1) {
+				document.getElementById("timer").innerHTML = count + " second";
+			}
+			else
+				document.getElementById("timer").innerHTML = count + " seconds";
+			myTimer = setTimeout(myCounter, 1000);
+			var counter_store = count;
+			counter_store = counter_store % 5;
+			if (counter_store == 0) {
+				unit_counter++;
+			}
+			total = base_bill + (per_unit_cost * unit_counter);
+			if (total === 50)
+				total_bill = document.getElementById("price").innerHTML = "Rs. " + total + " (base charge)";
+			else
+				total_bill = document.getElementById("price").innerHTML = "Rs. " + total;
+			if (unit_counter == 1)
+				document.getElementById("unit_consumed").innerHTML = unit_counter + " unit consumed";
+			else
+				document.getElementById("unit_consumed").innerHTML = unit_counter + " units consumed";
+		}
+		function rst() {
+			turnOff();
+			var myInput1 = document.getElementById("timer");
+			var myInput2 = document.getElementById("price");
+			var myInput3 = document.getElementById("unit_consumed");
+			myInput1.innerHTML = '';
+			myInput2.innerHTML = '';
+			myInput3.innerHTML = '';
+			count = 0;
+			if (unit_counter == 1)
+				document.getElementById("bill").innerHTML = "Your total bill is " + total_bill + " for " + unit_counter + " unit consumed.";
+			else
+				document.getElementById("bill").innerHTML = "Your total bill is " + total_bill + " for " + unit_counter + " units consumed.";
+			document.getElementById("reset").disabled = true;
+			unit_counter = 0;
+		}
+	</script>
+	<style>
+		body {
+			text-align: center;
+			font-family: "tahoma";
+			letter-spacing: 0.03em;
+		}
+
+		.btn {
+			height: 35px;
+			width: 90px;
+			color: white;
+			border: 1px solid black;
+			border-radius: 2px;
+			font-weight: bold;
+			font-size: 16px;
+			cursor: pointer;
+			background-color: rgb(220, 220, 220);
+			text-shadow: 1px 1px 2px #000;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>Toggle switch</h3>
+	<img id="image" src="bulb_off.jpg" /><br/>
+	<button id="switch" class="btn" onclick="toggle()">Turn on</button>
+	<button id="reset" class="btn" onclick="rst()">Reset</button>
+	<p id="timer"></p>
+	<p id="unit_consumed"></p>
+	<p id="price"></p>
+	<p id="bill"></p>
+</body>
+
+</html>
