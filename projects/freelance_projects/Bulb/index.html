@@ -15,7 +15,7 @@
 			var status2 = document.getElementById("switch");
 			if (status2.textContent == "Turn on") {
 				status2.textContent = "Turn off";
-				status1.src = "bulb_on.jpg";
+				status1.src = "Bulb/bulb_on.jpg";
 				document.getElementById("switch").style.backgroundColor = "rgb(250,50,50)";
 				var myInput4 = document.getElementById("bill");
 				myInput4.innerHTML = '';
@@ -30,7 +30,7 @@
 			var status1 = document.getElementById("image");
 			var status2 = document.getElementById("switch");
 			status2.textContent = "Turn on";
-			status1.src = "bulb_off.jpg";
+			status1.src = "Bulb/bulb_off.jpg";
 			document.getElementById("switch").style.backgroundColor = "rgb(50,250,50)";
 			clearInterval(myTimer);
 		}
@@ -98,7 +98,7 @@
 
 <body>
 	<h3>Toggle switch</h3>
-	<img id="image" src="bulb_off.jpg" /><br/>
+	<img id="image" src="Bulb/bulb_off.jpg" /><br/>
 	<button id="switch" class="btn" onclick="toggle()">Turn on</button>
 	<button id="reset" class="btn" onclick="rst()">Reset</button>
 	<p id="timer"></p>
