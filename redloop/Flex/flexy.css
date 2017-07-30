@@ -69,7 +69,6 @@ li {
 }
 
 .fifth-container {
-    justify-content: space-around;
     flex-direction: column-reverse;
 }
 
