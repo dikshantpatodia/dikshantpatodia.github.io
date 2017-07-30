@@ -1,0 +1,197 @@
+body {
+    font-family: Trebuchet MS, sans-serif;
+    padding: 0px;
+    margin: 0px auto;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    font-weight: bold;
+    font-size: 28px;
+    background: linear-gradient(to right, #558C89, #74AFAD, #D9853B);
+    color: #fafafa;
+    margin-bottom: 60px;
+    flex-direction: column;
+}
+
+.sub-head {
+    font-size: 10px;
+}
+
+#container {
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 100%;
+    background-color: #f2f2f2;
+    font-size: 14px;
+}
+
+label {
+    margin-left: 37.5px;
+    border-bottom: 1px dotted #f00;
+    display: inline-block;
+}
+
+li {
+    list-style: none;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.in {
+    margin: 7.5px 30px 45px 30px;
+    background-color: #000;
+    max-width: 100%;
+    height: auto;
+    border-left: 5px solid #fff;
+    display: flex;
+    cursor: pointer;
+}
+
+.first-container {
+    flex-direction: column;
+}
+
+.third-container {
+    justify-content: space-around;
+}
+
+.fourth-container {
+    justify-content: space-around;
+    flex-direction: row-reverse;
+}
+
+.fifth-container {
+    justify-content: space-around;
+    flex-direction: column-reverse;
+}
+
+.sixth-container {
+    justify-content: center;
+}
+
+.seventh-container {
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+}
+
+.eighth-container {
+    justify-content: space-between;
+}
+
+.ninth-container {
+    height: auto;
+    background: #74AFAD;
+    background: linear-gradient(to right, #558C89, #74AFAD, #D9853B);
+}
+
+.tenth-container {
+    height: 90px;
+    align-items: center;
+}
+
+.a-self {
+    align-self: auto;
+    background-color: #558C89;
+}
+
+.b-self {
+    align-self: flex-start;
+    background-color: #74AFAD;
+}
+
+.c-self {
+    align-self: flex-end;
+    background-color: #D9853B;
+}
+
+.d-self {
+    align-self: baseline;
+    background-color: #558C89;
+}
+
+.e-self {
+    align-self: stretch;
+    height: auto;
+    background-color: #74AFAD;
+}
+
+.o1 {
+    order: -10;
+}
+
+.o3 {
+    order: 0;
+}
+
+.o4 {
+    order: -5;
+}
+
+.o5 {
+    order: 10;
+}
+
+.o6 {
+    order: 5;
+}
+
+.a {
+    width: 90%;
+    background-color: #74AFAD;
+}
+
+.b {
+    width: 80%;
+    background-color: #558C89;
+}
+
+.c {
+    width: 70%;
+    background-color: #D9853B;
+}
+
+.d {
+    width: 40%;
+    background-color: #74AFAD;
+}
+
+.e {
+    width: 30%;
+    background-color: #558C89;
+}
+
+.f {
+    width: 20%;
+    background-color: #D9853B;
+}
+
+p {
+    text-align: center;
+    color: #f00;
+    font-size: 10px;
+}
+
+@media screen and (max-width: 320px) {
+    #container {
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+    #container {
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 10px;
+    }
+}

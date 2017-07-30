@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <title>iFLEX - its flexible</title>
+    <link rel="stylesheet" href="flexy.css">
+</head>
+
+<body>
+    <div id="container">
+        <header class="banner"><i>iFLEX</i><span class="sub-head">(Use of <i>flex</i> in CSS)</span></header>
+
+        <label><b>1. CSS:</b>&nbsp;<i>flex-direction: column</i></label>
+        <div class="in first-container">
+            <li class="a">Box-1 90%</li>
+            <li class="b">Box-2 80%</li>
+            <li class="c">Box-3 70%</li>
+        </div>
+
+        <label><b>2. CSS:</b>&nbsp;<i>flex-direction: row (by default)</i></label>
+        <div class="in second-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>3. CSS:</b>&nbsp;<i>justify-content: space-around</i></label>
+        <div class="in third-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>4. CSS:</b>&nbsp;<i>justify-content: space-around, flex-direction: row-reverse</i></label>
+        <div class="in fourth-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>5. CSS:</b>&nbsp;<i>justify-content: space-around, flex-direction: column-reverse</i></label>
+        <div class="in fifth-container">
+            <li class="a">Box-1 90%</li>
+            <li class="b">Box-2 80%</li>
+            <li class="c">Box-3 70%</li>
+        </div>
+
+        <label><b>6. CSS:</b>&nbsp;<i>justify-content: center</i></label>
+        <div class="in sixth-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>7. CSS:</b>&nbsp;<i>justify-content: center, align-items: center</i></label>
+        <div class="in seventh-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>8. CSS:</b>&nbsp;<i>justify-content: space-between</i></label>
+        <div class="in eighth-container">
+            <li class="d">Box-1 40%</li>
+            <li class="e">Box-2 30%</li>
+            <li class="f">Box-3 20%</li>
+        </div>
+
+        <label><b>9. CSS:</b>&nbsp;<i>order: -10 > -5 > 0 > 5 > 10</i></label>
+        <div class="in ninth-container">
+            <li class="o1">Box-1 (order: -10)</li>
+            <li class="o2">Box-2 (order: none)</li>
+            <li class="o3">Box-3 (order: 0)</li>
+            <li class="o4">Box-4 (order: -5)</li>
+            <li class="o5">Box-5 (order: 10)</li>
+            <li class="o6">Box-6 (order: 5)</li>
+        </div>
+
+        <label><b>10. CSS:</b>&nbsp;<i>align-self: auto | flex-start | flex-end | baseline | stretch</i></label>
+        <div class="in tenth-container">
+            <li class="a-self">Box-1 (align-self: auto)</li>
+            <li class="b-self">Box-2 (align-self: flex-start)</li>
+            <li class="c-self">Box-3 (align-self: flex-end)</li>
+            <li class="d-self">Box-4 (align-self: baseline)</li>
+            <li class="e-self">Box-5 (align-self: stretch)</li>
+        </div>
+        <p>----- x -----</p>
+    </div>
+</body>
+
+</html>
