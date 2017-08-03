@@ -35,6 +35,10 @@
     overflow: hidden;
 }
 
+.c100.blue {
+    background-color: #0C99FF;
+}
+
 .c100.big {
     font-size: 200px;
 }
