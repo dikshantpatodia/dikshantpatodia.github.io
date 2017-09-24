@@ -57,32 +57,33 @@
         <main id="main">
             <div class="container form">
                 <div class="col-md-8 col-md-offset-2 animate-box">
-                    <p style="font-size: 17px; font-weight: bold">LOCATION:</p>
-                    <p style="font-size: 17px;">TROUBLE CLEAR CONSUMER SOLUTIONS PVT. LTD.<br/> SHRIRAM INSTITUTE (TBI), 19 UNIVERSITY ROAD, DELHI-110007<br/> E-MAIL: <a href="mailto:info@troubleclear.com">info@troubleclear.com</a>, <a href="mailto:support@troubleclear.com">support@troubleclear.com</a><br/>HELPLINE:
-                        +91 926 6222 666, +91 927 8222 666 (10:00 AM - 06:00 PM)<br/>MISSED CALL: +91 786 1011 223 (24 Hrs)</p>
+                    <p style="font-size: 16px; font-weight: bold">LOCATION:</p>
+                    <p style="font-size: 16px;">TROUBLE CLEAR CONSUMER SOLUTIONS PVT. LTD.<br/> SHRIRAM INSTITUTE (TBI), 19 UNIVERSITY ROAD, DELHI-110007<br/> E-MAIL: <a href="mailto:info@troubleclear.com">info@troubleclear.com</a>, <a href="mailto:support@troubleclear.com">support@troubleclear.com</a><br/>HELPLINE:<br />
+                        +91 926 6222 666,<br />+91 927 8222 666 (10:00 AM - 06:00 PM)<br/>MISSED CALL:<br />+91 786 1011 223 (24 Hrs)</p>
                 </div>
             </div>
             <div class="container">
                 <div class="col-md-8 col-md-offset-2 animate-box">
-                    <form action="#" method="post">
+                    <form method="post" onsubmit="checkvalidation()">
                         <div class="form-group row">
                             <div class="col-md-6 field">
-                                <label for="firstname">First Name</label>
-                                <input type="text" name="FName" id="firstname" class="form-control">
+                                <label for="firstname">First Name <req style="color:red">*</req></label>
+                                <input type="text" name="FName" id="firstname" class="form-control" required>
+                                <label id="fname" />
                             </div>
                             <div class="col-md-6 field">
-                                <label for="lastname">Last Name</label>
-                                <input type="text" name="FName" id="lastname" class="form-control">
+                                <label for="lastname">Last Name <req style="color:red">*</req></label>
+                                <input type="text" name="FName" id="lastname" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6 field">
                                 <label for="email">Email</label>
-                                <input type="text" name="FName" id="email" class="form-control">
+                                <input type="email" name="FName" id="email" class="form-control">
                             </div>
                             <div class="col-md-6 field">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="FName" id="phone" class="form-control">
+                                <label for="phone">Phone <req style="color:red">*</req></label>
+                                <input type="tel" name="FName" id="phone" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group row">
