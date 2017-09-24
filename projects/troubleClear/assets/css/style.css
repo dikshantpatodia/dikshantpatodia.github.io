@@ -3313,8 +3313,8 @@ h6 {
 }
 
 #main .container {
-    padding: 60px;
-    width: 85%;
+    padding: 30px;
+    width: 100%;
     background-color: #f7f7f7;
 }
 
@@ -4008,13 +4008,6 @@ quote {
       margin-top: 2.5%;
   }
 
-@media only screen and (max-width: 500px) {
-    .silver, .gold, .platinum {
-        float: left;
-        max-width: 320px;
-    }
-}
-
 .details p {
     color: #000;
 }
@@ -4043,4 +4036,17 @@ quote {
 
 #work {
     margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 500px) {
+    .silver, .gold, .platinum {
+        float: left;
+        max-width: 320px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #main {
+        padding: 0px;
+    }
 }
