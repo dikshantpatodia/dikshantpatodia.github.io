@@ -189,6 +189,7 @@ border-radius: 5px;
 padding: 40px 0;
 overflow: hidden;
 }
+
 .main-title h3{
 	color: #a5a5a5;
 	margin-bottom: 0;
@@ -244,16 +245,25 @@ overflow: hidden;
 }
 .featured-items .block{margin-bottom: 30px;}
 .subscribe{
-	background: #5c5c5c;
-	padding: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background: #C8CDD2 linear-gradient(135deg, rgba(255,255,255,0.5), rgba(0,0,0,0.1));
+	padding: 1.5%;
 	border-radius: 3px;
 	overflow: hidden;
+	font-family: 'fjalla_oneregular';
 }
-.subscribe h1{
+.subscribe p {
 	display: inline-block;
-	padding-right: 20px;
-	padding-bottom: 0;
-	color: #fff;
+	font-size: 20px;
+	color: #555;
+	padding-right: 5%;
+}
+.subscribe .downloadApp {
+	display: inline-block;
+	font-size: 16px;
+	color: #555;
 }
 .subscribe .btn{
 	margin-left: 15px;
@@ -263,8 +273,18 @@ overflow: hidden;
 	background: #eee;
 	color: #000;
 }
-.subscribe .form-control {
-border-color: #fff;
+.subscribe a {
+	color: #000;
+	cursor: pointer;
+}
+.subscribe a:hover {
+	border-radius: 3px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.subscribe img {
+	width: 20%;
+	height: auto;
 }
 
 .featured-blocks{
@@ -534,7 +554,7 @@ border-bottom-color: #eee;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	background: linear-gradient(135deg, rgba(0,0,0, 0.2), rgba(0,0,0, 0.1)), url('../images/bg.jpg');
+	background: linear-gradient(135deg, rgba(0,0,0, 0.4), rgba(0,0,0, 0.2)), url('../images/bg.jpg');
 	background-position: center;
 	height: 377px;
 	width: 100%;
@@ -748,6 +768,18 @@ border-bottom-color: #eee;
 	.contact_description .address h5 {
 		font-size: 12px;
 	}
+	.subscribe {
+		padding: 4%;
+	}
+	.subscribe img {
+		width: 45%;
+	}
+	.subscribe p {
+		font-size: 15px;
+	}
+	.subscribe .downloadApp {
+		font-size: 12px;
+	}
 }
 
 @media (max-width: 321px) {
@@ -762,6 +794,18 @@ border-bottom-color: #eee;
 	}
 	.contact_description .address h5 {
 		font-size: 10px;
+	}
+	.subscribe {
+		padding: 4%;
+	}
+	.subscribe img {
+		width: 45%;
+	}
+	.subscribe p {
+		font-size: 16px;
+	}
+	.subscribe .downloadApp {
+		font-size: 12px;
 	}
 }
 
@@ -784,4 +828,52 @@ pre {
 
 .annualPackage h2 {
 	font-size: 24px;
+}
+
+.faq {
+	width: 60%;
+}
+
+.faq .question {
+	color: #F03434;
+}
+
+.faq .answer {
+	color: #00E640;
+}
+
+.scroll-top-wrapper {
+    position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 99999999;
+    background-color: #777777;
+	color: #eeeeee;
+	width: 50px;
+	height: 48px;
+	line-height: 48px;
+	right: 24px;
+	bottom: 24px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.scroll-top-wrapper:hover {
+	background-color: #888888;
+}
+.scroll-top-wrapper.show {
+    visibility:visible;
+    cursor:pointer;
+	opacity: 1.0;
+}
+.scroll-top-wrapper i.fa {
+	line-height: inherit;
 }

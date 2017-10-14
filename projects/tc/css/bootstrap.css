@@ -4851,8 +4851,8 @@ margin-right: 0 !important;
 
 .label {
   display: inline;
-  padding: .2em .6em .3em;
-  font-size: 75%;
+  padding: .5em 1.5em .5em 1.5em;
+  font-size: 85%;
   font-weight: bold;
   line-height: 1;
   color: #ffffff;

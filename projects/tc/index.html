@@ -310,7 +310,6 @@
     <div class="ruler"></div>
     <br/><br/><br/>
   </div>
-
   <div class="container">
       <div class="row">
         <div class='col-md-offset-2 col-md-8 text-center'>
@@ -369,6 +368,14 @@
             <a data-slide="next" href="#quote-carousel" class="right carousel-control"></a>
           </div>                          
         </div>
+      </div>
+      <br/><br/><br/>
+    </div>
+    <div class="container">
+      <div class="subscribe">
+        <center>
+          <p>You can also customize a package as per your need. <span class="downloadApp">To customize,<a href="contact.html">&nbsp;&nbsp;contact us&nbsp;&nbsp;</a> or download our official app.</span></p><a href="#"><img src="images/google-play-badge.png" /></a>
+        </center>
       </div>
       <br/><br/><br/>
     </div>
@@ -534,8 +541,8 @@ viii. Geyser
               <div class="col-sm-3">
                   <h5>Support</h5>
                   <ul>
-                      <li><a href="#">FAQ</a></li>
-                      <li><a href="#">Help desk</a></li>
+                      <li><a href="faq.html">FAQ</a></li>
+                      <li><a href="contact.html">Help desk</a></li>
                   </ul>
               </div>
               <div class="col-sm-3 info">
@@ -558,9 +565,33 @@ viii. Geyser
       </div>
     </div>
   </footer>
+  <div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+      <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+  </div>
   <script src="js/html5shiv.js"></script>
  	<script src="js/jquery-1.9.1.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script>
+    $(function(){
+      $(document).on( 'scroll', function(){
+        if ($(window).scrollTop() > 100) {
+          $('.scroll-top-wrapper').addClass('show');
+        } else {
+          $('.scroll-top-wrapper').removeClass('show');
+        }
+      });
+      $('.scroll-top-wrapper').on('click', scrollToTop);
+    });
+    function scrollToTop() {
+      verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+      element = $('body');
+      offset = element.offset();
+      offsetTop = offset.top;
+      $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+    }
+  </script>
   </body>
 </html>
