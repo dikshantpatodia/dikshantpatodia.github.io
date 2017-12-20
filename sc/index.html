@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slaying Clashers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    @font-face {
+      font-family: 'supercell';
+      src: url("supercell.ttf");
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: supercell;
+    }
+    main {
+      max-width: 100%;
+      height: auto;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #222;
+      max-width: 100%;
+      height: 60px;
+    }
+    img {
+      width: 130px;
+      margin-left: 30px;
+    }
+    ul {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    li {
+      width: 120px;
+      color: #fafafa;
+      font-size: 12px;
+    }
+    li:hover {
+      cursor: pointer;
+    }
+    .hero {
+      width: 100%;
+      height: 320px;
+      background-color: #fec900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+      color: #fafafa;
+    }
+    .hero::before, .hero::after {
+      width: 20px;
+      height: 20px;
+      color: #fafafa;
+      font-size: 21px;
+      display: block;
+      cursor: pointer;
+    }
+    .hero::before {
+      content: "<";
+      padding-left: 30px;
+      float: left;
+    }
+    .hero::after {
+      content: ">";
+      padding-right: 30px;
+      float: right;
+    }
+    .cards {
+      width: 100%;
+      height: 280px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    article {
+      width: 21%;
+      height: 80%;
+      background-color: #ddd;
+      border: 20px solid #fff;
+    }
+    .blog {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 20px;
+    }
+    footer {
+      width: 100%;
+      height: 180px;
+      background-color: #111;
+      color: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    footer p {
+      font-size: 13px;
+    }
+    .social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social .fa {
+      width: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      background-color: #F5F5F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #1e1e1e;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav>
+      <img src="logo.png" class="logo" alt="logo"/>
+      <ul>
+        <li>HOME</li>
+        <li>ABOUT</li>
+        <li>CAREERS</li>
+        <li>CONTACT</li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h4>Slideshow will appear here...</h4>
+    </section>
+    <section class="cards">
+      <article></article>
+      <article></article>
+      <article></article>
+      <article></article>
+    </section>
+    <section class="blog">
+      <div id="disqus_thread"></div>
+      <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://slayingclashers.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </section>
+    <footer>
+      <p>Made with&nbsp;&nbsp;<i class="fa fa-heart"
+        style="color: red" aria-hidden="true"></i>&nbsp;&nbsp;in India
+      </p>
+      <section class="social">
+        <p>Get connected with us:</p>&nbsp;&nbsp;
+        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+      </section>
+      <p>@slayingclashers</p>
+    </footer>
+  </main>
+  <script id="dsq-count-scr" src="//slayingclashers.disqus.com/count.js" async></script>
+</body>
+</html>
