@@ -1,0 +1,15 @@
+{
+  "short_name": "Dikshant Patodia | Portfolio",
+  "name": "Dikshant Patodia Portfolio built with React",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000",
+  "background_color": "#FFF"
+}
