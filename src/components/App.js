@@ -1,18 +1,26 @@
 import React                     from 'react';
-import Header                    from ./Header;
-import AcademicProject           from ./AcademicProjects;
-import Achievements              from ./Achievements;
-import Responsibilities          from ./Responsibilities;
-import Footer                    from ./Footer;
+
+// Components
+import Header                    from './Header';
+import Skills                    from './Skills';
+import AcademicProjects          from './AcademicProjects';
+import Achievements              from './Achievements';
+import Responsibilities          from './Responsibilities';
+import Footer                    from './Footer';
+
+// Custom style
+import                            '../styles/index.css';
 
 const App = () => {
   return (
-    <Header />
-    <Skills />
-    <AcademicProjects />
-    <Achievements />
-    <Responsibilities />
-    <Footer />
+    <div>
+      <Header />
+      <Skills />
+      <AcademicProjects />
+      <Achievements />
+      <Responsibilities />
+      <Footer />
+    </div>
   );
 }
 
