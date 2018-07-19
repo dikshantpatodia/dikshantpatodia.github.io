@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('personal-data'));
+ReactDOM.render(<App />, document.querySelector('.personal-data'));
