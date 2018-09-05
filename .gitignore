@@ -1,5 +1,7 @@
 node_modules/
 
+build/
+
 .sass-cache/
 *.css.map
 *.sass.map
