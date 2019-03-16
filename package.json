@@ -2,7 +2,7 @@
   "name": "dikshantpatodia.github.io",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://dikshantpatodia.github.io/dev",
+  "homepage": "https://dikshantpatodia.github.io/dikshant",
   "dependencies": {
     "gh-pages": "^1.2.0",
     "prop-types": "^15.6.2",
