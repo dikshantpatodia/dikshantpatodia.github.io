@@ -414,25 +414,6 @@
 	ga('create', 'UA-72854831-1', 'auto');
 	ga('send', 'pageview');
 
-		
-	/* To eliminate render-blocking JavaScript and CSS in above-the-fold content */
-	function downloadJSAtOnload() {
-		var element = document.createElement("script");
-		element.src = "defer.js";
-		document.body.appendChild(element);
-		}
-	if (window.addEventListener)
-	window.addEventListener("load", downloadJSAtOnload, false);
-	else if (window.attachEvent)
-	window.attachEvent("onload", downloadJSAtOnload);
-	else window.onload = downloadJSAtOnload;
-	</script>
-	
-	<script src="js/jquery.js"></script>
-	<script src="js/prettyPhoto.js"></script>
-	<script src="js/backPosition.js"></script>
-	<script src="js/custom.js"></script>
-
 	<!--
 	Thank you geek for exploring my code (Some references for making this Webpage are taken from Internet).
 
