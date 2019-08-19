@@ -34,29 +34,48 @@ function getExtension(path) {
   return fullFileName.substring(fullFileName.lastIndexOf('.') + 1).toLowerCase();
 }
 
+
+// Check user media for video streaming
+(function checkUserMedia() {
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || null;
+  
+  let video_audio_properties = {video: true, audio: true};
+  video_audio_properties = {video: {mandatory: {minWidth: 300, minHeight: 300, minFrameRate: 30}, optional: [{ minFrameRate: 60 }]}, audio: true};
+  let videoElement = document.createElement('video');
+
+  function onSuccess(stream) {
+    videoElement.src = window.URL.createObjectURL(stream);
+    videoElement.play();
+  }
+
+  function onError(error){
+    alert("Video capture error");
+    console.log("Video capture error: ", error.code);
+  }
+
+  if(navigator.getUserMedia != null) {
+    navigator.getUserMedia(video_audio_properties, onSuccess, onError);
+  } else {
+    alert("microphone and webcam API not supported");
+  }
+})();
+
 /**
  * @param  {HTMLInputElement} event
  */
 (function captureFile(event) {
   let fileInput = document.getElementById("file-input");
   let fileCapture = document.getElementById("file-capture");
+  let arrayOfFiles = [];
 
   if(fileInput) {
     fileInput.onchange = function({target}) {
-      handleFileOperation(this, {target});
+      handleFileOperation(this, {target}, arrayOfFiles);
     };
   }
 })();
 
-function handleFileOperation(thisParam, {target}) {
-  // Image, video and audio HTMLElement
-  let imageSrc = document.getElementsByClassName('src-image')[0];
-  let videoSrc = document.getElementsByClassName('src-video')[0];
-  let audioSrc = document.getElementsByClassName('src-audio')[0];
-
-  // Preview
-  let fileName = document.getElementsByClassName('preview-filename')[0];
-  let deletePreview = document.getElementsByClassName('preview-delete')[0];
+function handleFileOperation(thisParam, {target}, arrayOfFiles) {
   let input = thisParam.files[0];
   target.value = ''; // resetting the target because if the user re-upload the same file, onchange is not fired (default browser behaviour)
   
@@ -67,34 +86,20 @@ function handleFileOperation(thisParam, {target}) {
   if((fileType !== FILE_TYPE.IMAGE) && (fileType !== FILE_TYPE.VIDEO) && (fileType !== FILE_TYPE.AUDIO)) {
     alert("File type not supported.");
     return;
-  } else {
-    fileName.innerHTML = input.name;
-    
-    // Make delete visible when src is available
-    deletePreview.style.display = "block";
   }
 
   // Check file type and src to respective tags
   switch(fileType) {
     case FILE_TYPE.IMAGE: {
-      imageSrc.style.display = "unset";
-      imageSrc.src = URL.createObjectURL(input);
-      resetToDefaultOtherFileTypes(videoSrc);
-      resetToDefaultOtherFileTypes(audioSrc);
+      arrayOfFiles.push(URL.createObjectURL(input));
       break;
     }
     case FILE_TYPE.VIDEO: {
-      videoSrc.style.display = "unset";
-      videoSrc.src = URL.createObjectURL(input);
-      resetToDefaultOtherFileTypes(imageSrc);
-      resetToDefaultOtherFileTypes(audioSrc);
+      arrayOfFiles.push(URL.createObjectURL(input));
       break;
     }
     case FILE_TYPE.AUDIO: {
-      audioSrc.style.display = "unset";
-      audioSrc.src = URL.createObjectURL(input);
-      resetToDefaultOtherFileTypes(imageSrc);
-      resetToDefaultOtherFileTypes(videoSrc);
+      arrayOfFiles.push(URL.createObjectURL(input));
       break;
     }
     default: {
@@ -102,34 +107,87 @@ function handleFileOperation(thisParam, {target}) {
     }
   }
 
-  // To delete/remove the preview
-  deletePreview.onclick = function() {
-    if (confirm('Are you sure you want to delete this file?')) {
-      if(fileType === FILE_TYPE.IMAGE) {
-        resetToDefaultOtherFileTypes(imageSrc);
-        resetFileName(fileName, deletePreview);
-      } else if (fileType === FILE_TYPE.VIDEO) {
-        resetToDefaultOtherFileTypes(videoSrc);
-        resetFileName(fileName, deletePreview);
-      } else if (fileType === FILE_TYPE.AUDIO) {
-        resetToDefaultOtherFileTypes(audioSrc);
-        resetFileName(fileName, deletePreview);
+  let srcWrapper = document.getElementsByClassName('src-wrapper')[0];
+  srcWrapper.style.display = "flex";
+  const files = arrayOfFiles.map((item) => (
+    srcWrapper.appendChild(createCustomElement(item, fileType))
+  ));
+  arrayOfFiles.length = 0;
+}
+
+function createCustomElement(src, fileType) {
+  let divElement = document.createElement("div");
+  // let overlayElement = document.createElement("div");
+  let deleteElement = document.createElement("div");
+
+  deleteElement.innerHTML = '✕';
+  deleteElement.title = 'Delete this file';
+  
+  switch(fileType) {
+    case FILE_TYPE.IMAGE: {
+      let imageElement = document.createElement("img");
+      
+      divElement.appendChild(imageElement);
+      divElement.appendChild(deleteElement);
+
+      divElement.classList.add("src-image-container");
+      imageElement.src = src;
+      imageElement.classList.add("src-image");
+
+      deleteElement.classList.add("src-delete");
+      deleteElement.onclick = function() {
+        divElement.parentNode.removeChild(divElement);
+        checkForChildNodes();
       }
-    } else {
+      break;
+    }
+    case FILE_TYPE.VIDEO: {
+      let videoElement = document.createElement("video");  
+
+      divElement.appendChild(videoElement);
+      divElement.appendChild(deleteElement);
+
+      divElement.classList.add("src-video-container");
+      videoElement.src = src;
+      videoElement.controls = true;
+      videoElement.playsInline = true;
+      videoElement.classList.add("src-video");
+
+      deleteElement.classList.add("src-delete");
+      deleteElement.onclick = function() {
+        divElement.parentNode.removeChild(divElement);
+        checkForChildNodes();
+      }
+      break;
+    }
+    case FILE_TYPE.AUDIO: {
+      let audioElement = document.createElement("audio");
+
+      divElement.appendChild(audioElement);
+      divElement.appendChild(deleteElement);
+
+      divElement.classList.add("src-audio-container");
+      audioElement.src = src;
+      audioElement.controls = true;
+      audioElement.classList.add("src-audio");
+
+      deleteElement.classList.add("src-delete");
+      deleteElement.onclick = function() {
+        divElement.parentNode.removeChild(divElement);
+        checkForChildNodes();
+      }
+      break;
+    }
+    default: {
       return;
     }
   }
+  return divElement;
 }
 
-/**
- * @param {HTMLElement} fileSrc
- */
-function resetToDefaultOtherFileTypes(fileSrc) {
-  fileSrc.src = '#';
-  fileSrc.style.display = "none";
-};
-
-function resetFileName(filename, deletePreview) {
-  filename.innerHTML = "No file selected yet.";
-  deletePreview.style.display = "none";
+function checkForChildNodes() {
+  let srcWrapper = document.getElementsByClassName('src-wrapper')[0];
+  if (!srcWrapper.hasChildNodes()) {
+    srcWrapper.style.display = "none";
+  }
 }

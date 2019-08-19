@@ -34,6 +34,10 @@ img {
   vertical-align: middle;
 }
 
+main {
+  user-select: none;
+}
+
 header {
   @extend %bg-color-gradient;
   z-index: 1;
@@ -103,7 +107,7 @@ input[type="file"] {
 
 // Container
 .container {
-  @include flex(flex-end, null, column);
+  @include flex(null, null, column);
 }
 
 .preview {
@@ -134,11 +138,75 @@ input[type="file"] {
 }
 
 .src {
-  // When image/video/audio is first initiated
-  &-image,
-  &-video,
-  &-audio {
+  &-wrapper {
+    @include flex(center);
     display: none;
+    flex-wrap: wrap;
+    margin: 12px;
+    padding: 12px 4px 12px 12px;
+    border: 1px solid #DDD;
+    width: calc(100% - 24px);
+    height: auto;
+    max-height: 50%;
+    overflow-y: auto;
+  }
+
+  &-delete {
+    @include flex(center, center);
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: $grey-5;
+    font-size: 14px;
+    background: #FFF;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+    cursor: pointer;
+  }
+
+
+  &-view {
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    color: $primary-white;
+    opacity: 0.9;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &-dialog {
+    display: none;
+    position: relative;
+    margin-top: 48px;
+    width: 100%;
+    height: calc(100vh - 48px);
+    border-radius: 4px;
+    &-backdrop {
+      z-index: 5;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    &-close {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      color: $primary-white;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+    }
   }
 
   &-image,
@@ -151,12 +219,27 @@ input[type="file"] {
     }
     &-container {
       @include flex(center, center);
-      margin: 0 auto;
-      max-width: 340px;
-      max-height: 50%;
+      position: relative;
+      height: 160px;
       border-radius: 4px;
       overflow: hidden;
+      border: 1px solid #EEE;
+      border-radius: 4px;
+      margin: 0 8px 8px 0px;
+
+      &:hover {
+        .src-overlay,
+        .src-delete,
+        .src-view {
+          display: block;
+        }
+      }
     }
+  }
+  &-image-container,
+  &-audio-container,
+  &-video-container {
+    width: calc(100% - 8px);
   }
 }
 
@@ -207,7 +290,6 @@ input[type="file"] {
 .note {
   position: absolute;
   bottom: 8px;
-  // width: 100%;
   padding: 0 12px;
   font-size: 10px;
   color: $grey-7;
@@ -233,5 +315,12 @@ input[type="file"] {
   }
   .title-instructions-container {
     display: none;
+  }
+  .src {
+    &-image-container,
+    &-audio-container,
+    &-video-container {
+      width: calc((100% / 2) - 8px) !important;
+    }
   }
 }
