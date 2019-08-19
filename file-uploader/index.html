@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>File uploader</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+
+  <body>
+    <main>
+      <!-- Header -->
+      <header>
+        <div class="title-container">
+          <div class="title-head">PubNinja &mdash;</div>
+          <div class="title-subhead">File uploader</div>
+          <div class="title-instructions-container">
+            <div class="title-instructions-content">
+              Create a web page which allows user to take images/videos/audio from their device(it could be either internal or
+              external connected device).<br/> <br />Once user takes/records the image/video/audio show that on the same page in the feed format.
+              Think of it like FB status update tool bar, it takes the content and then pushes it below on the feed(but only for
+              image, audio and video). User should be able to playback and delete the content that he has uploaded on the page.
+            </div>
+            <div class="title-instructions-image">i</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="wrapper w-100">
+
+        <!-- Viewed in Desktop and tablet mode -->
+        <div class="instructions p-24">
+          <h4 class="instruction-head">Intructions to follow:</h4>
+          <p class="instructions-note">
+            Create a web page which allows user to take images/videos/audio from their device(it could be either internal or
+            external connected device).<br />Once user takes/records the image/video/audio show that on the same page in the feed format.
+            Think of it like FB status update tool bar, it takes the content and then pushes it below on the feed(but only for
+            image, audio and video). User should be able to playback and delete the content that he has uploaded on the page.
+          </p>
+        </div>
+
+        <div class="container w-100">
+          <!-- File preview -->
+          <div class="preview">
+            <div class="preview-label">Preview: <span class="preview-filename">No file selected yet.</span></div>
+            <div class="preview-delete" title="Delete the file">
+              <img class="preview-delete-icon" src="./assets/trash.png" alt="Delete the file" />
+            </div>
+          </div>
+
+          <!-- Image/Video/Audio containers -->
+          <div class="src-image-container">
+            <img class="src-image" alt="image" />
+          </div>
+          <div class="src-video-container">
+            <video class="src-video" controls playsInline webkit-playsinline="true">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="src-audio-container">
+            <audio class="src-audio" controls>
+              Your browser does not support the audio tag.
+            </audio>
+          </div>
+          
+          <!-- Input to get the file -->
+          <label class="file-capture">
+            <input id="file-input" type="file" accept="image/*, video/*, audio/*" onchange="captureFile(event)" />
+            <div class="file-capture-text-container">
+              <img class="file-capture-image" src="./assets/bg_file_input.png" alt="upload icon" />
+              <div class="file-capture-text">Upload file</div>
+            </div>
+          </label>
+
+          <!-- Foot note -->
+          <div class="note">NOTE: Supports only images/videos/audio</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>

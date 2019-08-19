@@ -1,0 +1,278 @@
+header .title-container, header .title-subhead {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+header {
+  background: linear-gradient(60deg, #fb4d24, #d44330);
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  letter-spacing: 0.025rem;
+}
+
+img {
+  vertical-align: middle;
+}
+
+header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  height: 48px;
+  width: 100%;
+  padding: 16px;
+  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+header .title-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .title-head {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+header .title-subhead {
+  padding-left: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-capture {
+  margin: 12px auto 0;
+  padding: 20px;
+  border: 2px dashed #EEE;
+  width: 340px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.file-capture-text-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.file-capture-image {
+  width: 160px;
+}
+
+.file-capture-text {
+  padding: 8px 24px;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.wrapper {
+  margin-top: 48px;
+  height: calc(100vh - 48px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.instructions {
+  display: none;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 26px;
+  border-bottom: 1px solid #EEE;
+  width: 100%;
+  color: #555;
+  font-size: 14px;
+  height: 44px;
+}
+
+.preview-label {
+  font-size: 13px;
+  color: #555;
+}
+
+.preview-filename {
+  font-size: 12px;
+  color: #777;
+}
+
+.preview-delete {
+  display: none;
+  cursor: pointer;
+}
+
+.preview-delete-icon {
+  width: 20px;
+  opacity: 0.9;
+}
+
+.src-image, .src-video, .src-audio {
+  display: none;
+}
+
+.src-image, .src-video, .src-audio {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.src-image:focus, .src-video:focus, .src-audio:focus {
+  outline: none;
+}
+
+.src-image-container, .src-video-container, .src-audio-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  max-width: 340px;
+  max-height: 50%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.p-24 {
+  padding: 24px;
+}
+
+.title-instructions-container {
+  z-index: 2;
+  margin-left: auto;
+}
+
+.title-instructions-container:hover {
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
+.title-instructions-container:hover .title-instructions-content {
+  z-index: 3;
+  display: block;
+  position: absolute;
+  top: 52px;
+  right: 44px;
+  padding: 8px 12px;
+  width: 320px;
+  background: #333;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.title-instructions-content {
+  display: none;
+}
+
+.title-instructions-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: #FAFAFA;
+  border: 1px solid #FAFAFA;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.note {
+  position: absolute;
+  bottom: 8px;
+  padding: 0 12px;
+  font-size: 10px;
+  color: #777;
+  text-align: center;
+}
+
+@media screen and (min-width: 769px) {
+  .instructions {
+    display: block;
+    background: url("../assets/illus.png") no-repeat;
+    background-position: bottom;
+    background-size: 60%;
+    background-color: #F7F7F7;
+    width: 75%;
+  }
+  .instructions-head {
+    color: #555;
+  }
+  .instructions-note {
+    line-height: 1.5;
+    color: #777;
+    font-size: 14px;
+  }
+  .title-instructions-container {
+    display: none;
+  }
+}
+/*# sourceMappingURL=index.css.map */
