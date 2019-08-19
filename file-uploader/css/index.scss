@@ -322,5 +322,8 @@ input[type="file"] {
     &-video-container {
       width: calc((100% / 2) - 8px) !important;
     }
+    &-delete {
+      font-size: 18px;
+    }
   }
 }

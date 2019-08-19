@@ -380,5 +380,8 @@ input[type="file"] {
   .src-image-container, .src-audio-container, .src-video-container {
     width: calc((100% / 2) - 8px) !important;
   }
+  .src-delete {
+    font-size: 18px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
