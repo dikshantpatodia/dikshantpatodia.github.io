@@ -7,7 +7,8 @@ const audioFormats = ['aac', 'mp3', 'weba'];
 const FILE_TYPE = {
   IMAGE: 'IMAGE',
   VIDEO: 'VIDEO',
-  AUDIO: 'AUDIO'
+  AUDIO: 'AUDIO',
+  OTHER: 'OTHER'
 };
 
 /**
@@ -82,13 +83,13 @@ function handleFileOperation(thisParam, {target}, arrayOfFiles) {
   // Get the file type
   let fileType = getFileType(input.name);
   
-  // Set the file name for preview
+  // Check for file type not supported
   if((fileType !== FILE_TYPE.IMAGE) && (fileType !== FILE_TYPE.VIDEO) && (fileType !== FILE_TYPE.AUDIO)) {
     alert("File type not supported.");
     return;
   }
 
-  // Check file type and src to respective tags
+  // Check file type and push the src in arrayOfFiles
   switch(fileType) {
     case FILE_TYPE.IMAGE: {
       arrayOfFiles.push(URL.createObjectURL(input));
@@ -108,7 +109,7 @@ function handleFileOperation(thisParam, {target}, arrayOfFiles) {
   }
 
   let srcWrapper = document.getElementsByClassName('src-wrapper')[0];
-  srcWrapper.style.display = "flex";
+  srcWrapper.style.display = "flex"; // to be visible when atleast 1 src is available in the wrapper
   const files = arrayOfFiles.map((item) => (
     srcWrapper.appendChild(createCustomElement(item, fileType))
   ));
@@ -117,7 +118,6 @@ function handleFileOperation(thisParam, {target}, arrayOfFiles) {
 
 function createCustomElement(src, fileType) {
   let divElement = document.createElement("div");
-  // let overlayElement = document.createElement("div");
   let deleteElement = document.createElement("div");
 
   deleteElement.innerHTML = '✕';
@@ -187,7 +187,7 @@ function createCustomElement(src, fileType) {
 
 function checkForChildNodes() {
   let srcWrapper = document.getElementsByClassName('src-wrapper')[0];
-  if (!srcWrapper.hasChildNodes()) {
+  if(!srcWrapper.hasChildNodes()) {
     srcWrapper.style.display = "none";
   }
 }
