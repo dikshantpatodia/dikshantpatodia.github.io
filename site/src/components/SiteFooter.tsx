@@ -13,7 +13,7 @@ export function SiteFooter() {
         </p>
         <nav className="footer-links" aria-label="Footer">
           <a href="/#top">Back to top</a>
-          <a href="/blog">Blog</a>
+          <a href="/blog/">Blog</a>
           <a href={profile.github} target="_blank" rel="noreferrer noopener">
             GitHub
           </a>

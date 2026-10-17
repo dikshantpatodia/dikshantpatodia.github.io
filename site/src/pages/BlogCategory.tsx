@@ -1,6 +1,6 @@
 import { PostList } from '@/components/PostList'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
-import { blogCategories, getCategory, postsInCategory } from '@/data/blog'
+import { blogCategories, blogIndexHref, categoryHref, getCategory, postsInCategory } from '@/data/blog'
 import { NotFound } from './NotFound'
 
 export function BlogCategoryPage({ categorySlug }: { categorySlug: string }) {
@@ -14,7 +14,7 @@ export function BlogCategoryPage({ categorySlug }: { categorySlug: string }) {
       <Breadcrumbs
         items={[
           { label: 'Home', href: '/' },
-          { label: 'Blog', href: '/blog' },
+          { label: 'Blog', href: blogIndexHref },
           { label: category.name },
         ]}
       />
@@ -28,14 +28,14 @@ export function BlogCategoryPage({ categorySlug }: { categorySlug: string }) {
       </header>
 
       <nav className="cats" aria-label="Filter by category">
-        <a className="cats__item" href="/blog">
+        <a className="cats__item" href={blogIndexHref}>
           All
         </a>
         {blogCategories.map((item) => (
           <a
             className="cats__item"
             key={item.slug}
-            href={`/blog/category/${item.slug}`}
+            href={categoryHref(item.slug)}
             aria-current={item.slug === categorySlug ? 'page' : undefined}
           >
             {item.name}

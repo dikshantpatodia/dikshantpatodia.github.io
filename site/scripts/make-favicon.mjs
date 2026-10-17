@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Generates the favicon set from a single source of truth, in the site's
- * editorial identity: near-black ink, warm paper, and one cobalt accent.
+ * editorial identity: near-black ink and warm paper, with no accent — the mark
+ * is the monogram alone, so it reads at tab size.
  *
  * Run from the site/ directory:  node scripts/make-favicon.mjs
  * Outputs:
@@ -17,16 +18,30 @@ import { Resvg } from '@resvg/resvg-js'
 
 const INK = '#17150f'
 const PAPER = '#f6f4ef'
-const ACCENT = '#2440e0'
 
 /**
- * A paper "D" with a cobalt period on an ink tile: the header monogram
- * ("DP" in a bordered square) reduced to what stays legible at 16 pixels.
+ * "DP" in paper on an ink tile — the header monogram, drawn as filled paths so
+ * the letterforms never depend on an installed font.
+ *
+ * Alignment is exact rather than eyeballed, which is why these are filled
+ * outlines and not stroked centre-lines (a stroked endpoint stops at its cap,
+ * so the "P" stem ended 3px above the "D" and the pair looked disoriented):
+ *
+ *   cap line   y = 18   both letters
+ *   baseline   y = 46   both letters
+ *   stroke      6px     uniform on every stem and bar of both letters
+ *   letter gap    8px   D ends x=30, P starts x=38
+ *   bounding box  x 10..54, y 18..46 — exactly centred on (32, 32)
+ *
+ * The counters are half-discs concentric with their bowls, so the bowl stroke
+ * stays 6px all the way round instead of thinning at the curves.
  */
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Dikshant Patodia">
   <rect width="64" height="64" rx="10" fill="${INK}"/>
-  <path fill="${PAPER}" fill-rule="evenodd" d="M13 15h7a17 17 0 0 1 0 34h-7z M20 22h3a10 10 0 0 1 0 20h-3z"/>
-  <rect x="43" y="41" width="8" height="8" fill="${ACCENT}"/>
+  <g fill="${PAPER}" fill-rule="evenodd">
+    <path d="M10 18H16a14 14 0 0 1 0 28H10Z M16 24a8 8 0 0 1 0 16Z"/>
+    <path d="M38 18H44a10 10 0 0 1 0 20V46H38Z M44 24a4 4 0 0 1 0 8Z"/>
+  </g>
 </svg>
 `
 

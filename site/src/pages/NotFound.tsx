@@ -8,7 +8,7 @@ export function NotFound() {
         <span className="eyebrow">Error 404</span>
         <h1 className="blog-head__title">That page moved, or never existed.</h1>
         <p className="blog-head__lede">
-          Try the <a href="/blog">writing</a>, or head back <a href="/">home</a>.
+          Try the <a href="/blog/">writing</a>, or head back <a href="/">home</a>.
         </p>
       </header>
     </div>

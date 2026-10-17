@@ -58,3 +58,18 @@ export function formatDate(iso: string): string {
   if (!year || !month || !day) return iso
   return `${day} ${MONTHS[month - 1] ?? ''} ${year}`
 }
+
+// ---------------------------------------------------------------------------
+// URLs.
+//
+// Every blog route is a directory holding an index.html, and GitHub Pages
+// answers the slash-less form with a 301 redirect to the trailing-slash form.
+// These helpers emit the URL that actually returns 200, so links, canonicals,
+// structured data, and the sitemap never point at a redirect.
+// ---------------------------------------------------------------------------
+
+export const blogIndexHref = '/blog/'
+
+export const categoryHref = (slug: string): string => `/blog/category/${slug}/`
+
+export const postHref = (slug: string): string => `/blog/${slug}/`

@@ -1,5 +1,5 @@
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
-import { formatDate, getPost, neighbours } from '@/data/blog'
+import { blogIndexHref, categoryHref, formatDate, getPost, neighbours, postHref } from '@/data/blog'
 import { NotFound } from './NotFound'
 
 export function BlogPostPage({ slug }: { slug: string }) {
@@ -14,8 +14,8 @@ export function BlogPostPage({ slug }: { slug: string }) {
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' },
-            { label: post.category, href: `/blog/category/${post.categorySlug}` },
+            { label: 'Blog', href: blogIndexHref },
+            { label: post.category, href: categoryHref(post.categorySlug) },
             { label: post.title },
           ]}
         />
@@ -50,7 +50,7 @@ export function BlogPostPage({ slug }: { slug: string }) {
       {older || newer ? (
         <nav className="post-nav" aria-label="More posts">
           {older ? (
-            <a className="post-nav__link" href={`/blog/${older.slug}`}>
+            <a className="post-nav__link" href={postHref(older.slug)}>
               <span className="idx">Older</span>
               <span className="post-nav__title">{older.title}</span>
             </a>
@@ -58,7 +58,7 @@ export function BlogPostPage({ slug }: { slug: string }) {
             <span />
           )}
           {newer ? (
-            <a className="post-nav__link post-nav__link--next" href={`/blog/${newer.slug}`}>
+            <a className="post-nav__link post-nav__link--next" href={postHref(newer.slug)}>
               <span className="idx">Newer</span>
               <span className="post-nav__title">{newer.title}</span>
             </a>
@@ -67,7 +67,7 @@ export function BlogPostPage({ slug }: { slug: string }) {
       ) : null}
 
       <p className="post__back">
-        <a href="/blog">← All notes</a>
+        <a href={blogIndexHref}>← All notes</a>
       </p>
     </div>
   )

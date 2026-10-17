@@ -1,6 +1,6 @@
 import { PostList } from '@/components/PostList'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
-import { blogCategories, blogPosts } from '@/data/blog'
+import { blogCategories, blogPosts, categoryHref } from '@/data/blog'
 
 export function BlogIndex() {
   return (
@@ -22,7 +22,7 @@ export function BlogIndex() {
           <span className="idx">{blogPosts.length}</span>
         </span>
         {blogCategories.map((category) => (
-          <a className="cats__item" key={category.slug} href={`/blog/category/${category.slug}`}>
+          <a className="cats__item" key={category.slug} href={categoryHref(category.slug)}>
             {category.name}
             <span className="idx">{category.count}</span>
           </a>

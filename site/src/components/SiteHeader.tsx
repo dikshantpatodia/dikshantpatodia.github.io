@@ -9,7 +9,7 @@ const NAV = [
   { href: '/#leadership', label: 'Leadership', index: '03' },
   { href: '/#journal', label: 'Journal', index: '04' },
   { href: '/#contact', label: 'Contact', index: '05' },
-  { href: '/blog', label: 'Blog', index: '06' },
+  { href: '/blog/', label: 'Blog', index: '06' },
 ] as const
 
 export function SiteHeader({ currentPath = '/' }: { currentPath?: string }) {
@@ -38,7 +38,7 @@ export function SiteHeader({ currentPath = '/' }: { currentPath?: string }) {
 
         <nav className="nav" aria-label="Primary">
           {NAV.map((item) => {
-            const isBlog = item.href === '/blog'
+            const isBlog = item.href === '/blog/'
             return (
               <a
                 key={item.href}

@@ -61,6 +61,16 @@ const updatedOf = (post) => post.updated ?? post.date
 const latestActivity = (list) =>
   list.reduce((latest, post) => (updatedOf(post) > latest ? updatedOf(post) : latest), '')
 
+/**
+ * Absolute URL for a route.
+ *
+ * Every route here is a directory containing an index.html, and GitHub Pages
+ * answers the slash-less form with a 301 to the trailing-slash form. Canonical
+ * links, structured data, and the sitemap must therefore name the URL that
+ * returns 200 — otherwise the declared canonical is itself a redirect.
+ */
+const url = (path) => (path === '/' ? `${ORIGIN}/` : `${ORIGIN}${path.replace(/\/+$/, '')}/`)
+
 /** Builds the tags that go between the <!--seo--> markers. */
 function head({ title, description, canonical, type = 'website', image, published, modified, structured }) {
   const tags = [
@@ -108,7 +118,7 @@ const breadcrumb = (items) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: item.name,
-    item: `${ORIGIN}${item.path}`,
+    item: url(item.path),
   })),
 })
 
@@ -153,19 +163,19 @@ const routes = [
         title: `Blog — notes on frontend engineering | ${SITE_NAME}`,
         description:
           'Short essays on architecture, performance, design systems, and testing — the frontend decisions that are easy to get wrong.',
-        canonical: `${ORIGIN}/blog`,
+        canonical: url('/blog'),
         image: `${ORIGIN}/og.png`,
         structured: [
           {
             '@context': 'https://schema.org',
             '@type': 'Blog',
             name: `Notes on frontend engineering — ${SITE_NAME}`,
-            url: `${ORIGIN}/blog`,
+            url: url('/blog'),
             description: DEFAULT_DESCRIPTION,
             blogPost: posts.map((post) => ({
               '@type': 'BlogPosting',
               headline: post.title,
-              url: `${ORIGIN}/blog/${post.slug}`,
+              url: url(`/blog/${post.slug}`),
               datePublished: post.date,
             })),
           },
@@ -184,14 +194,14 @@ const routes = [
       head({
         title: `${category.name} — blog | ${SITE_NAME}`,
         description: `Frontend notes filed under ${category.name} by ${SITE_NAME}.`,
-        canonical: `${ORIGIN}/blog/category/${category.slug}`,
+        canonical: url(`/blog/category/${category.slug}`),
         image: `${ORIGIN}/og.png`,
         structured: [
           {
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: `${category.name} — ${SITE_NAME}`,
-            url: `${ORIGIN}/blog/category/${category.slug}`,
+            url: url(`/blog/category/${category.slug}`),
           },
           breadcrumb([
             { name: 'Home', path: '/' },
@@ -209,7 +219,7 @@ const routes = [
       head({
         title: `${post.title} | ${SITE_NAME}`,
         description: post.summary,
-        canonical: `${ORIGIN}/blog/${post.slug}`,
+        canonical: url(`/blog/${post.slug}`),
         type: 'article',
         image: `${ORIGIN}/blog/${post.slug}/og.png`,
         published: post.date,
@@ -224,7 +234,7 @@ const routes = [
             dateModified: updatedOf(post),
             author: { '@type': 'Person', name: SITE_NAME, url: `${ORIGIN}/` },
             publisher: { '@type': 'Person', name: SITE_NAME },
-            mainEntityOfPage: `${ORIGIN}/blog/${post.slug}`,
+            mainEntityOfPage: url(`/blog/${post.slug}`),
             image: `${ORIGIN}/blog/${post.slug}/og.png`,
             keywords: post.tags.join(', '),
             articleSection: post.category,
@@ -281,16 +291,16 @@ for (const post of posts) {
 // Sitemap.
 const lastmod = latestActivity(posts) || new Date().toISOString().slice(0, 10)
 const urlEntries = [
-  { loc: `${ORIGIN}/`, priority: '1.0', changefreq: 'monthly', lastmod },
-  { loc: `${ORIGIN}/blog`, priority: '0.9', changefreq: 'weekly', lastmod },
+  { loc: url('/'), priority: '1.0', changefreq: 'monthly', lastmod },
+  { loc: url('/blog'), priority: '0.9', changefreq: 'weekly', lastmod },
   ...categories.map((category) => ({
-    loc: `${ORIGIN}/blog/category/${category.slug}`,
+    loc: url(`/blog/category/${category.slug}`),
     priority: '0.5',
     changefreq: 'monthly',
     lastmod,
   })),
   ...posts.map((post) => ({
-    loc: `${ORIGIN}/blog/${post.slug}`,
+    loc: url(`/blog/${post.slug}`),
     priority: '0.7',
     changefreq: 'monthly',
     lastmod: updatedOf(post),

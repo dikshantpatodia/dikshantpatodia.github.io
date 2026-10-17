@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { PostList } from './PostList'
 import { SectionHead } from './ui/SectionHead'
-import { latestPosts } from '@/data/blog'
+import { blogIndexHref, latestPosts } from '@/data/blog'
 
 export function Journal() {
   const posts = latestPosts(3)
@@ -19,7 +19,7 @@ export function Journal() {
       <PostList posts={posts} variant="teaser" />
 
       <p className="posts__more">
-        <a className="btn btn--line" href="/blog">
+        <a className="btn btn--line" href={blogIndexHref}>
           Read the blog
           <ArrowRight aria-hidden="true" />
         </a>
