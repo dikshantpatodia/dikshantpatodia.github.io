@@ -1,0 +1,33 @@
+{
+  "name": "dikshantpatodia-portfolio",
+  "private": true,
+  "version": "3.0.0",
+  "type": "module",
+  "description": "Dikshant Patodia — Lead Frontend Engineer. A typography-led engineering portfolio.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4173",
+    "typecheck": "tsc --noEmit",
+    "assets": "node scripts/make-favicon.mjs && node scripts/make-og.mjs",
+    "deploy": "node ../deploy.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.58.0",
+    "motion": "^14.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "marked": "^18.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  }
+}

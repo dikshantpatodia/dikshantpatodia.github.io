@@ -1,0 +1,9 @@
+# OS / editor noise.
+#
+# Note: the built site lives at the repository ROOT and is committed on purpose —
+# GitHub Pages serves it from the `master` branch (see README). Do not ignore
+# index.html, assets/, blog/, or any other generated page here.
+.DS_Store
+Thumbs.db
+*.swp
+*~

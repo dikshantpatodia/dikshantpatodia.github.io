@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f4ef" />
+
+    <!-- Set before first paint so reveal animations only hide content when JS is present. -->
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <noscript>
+      <style>.panel[hidden]{display:block!important}.playground__tabs{display:none!important}</style>
+    </noscript>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--seo-->
+    <title>100% coverage is not confidence | Dikshant Patodia</title>
+    <meta name="description" content="Coverage measures which lines ran, not whether the behaviour is protected. A suite can be green and still tell you nothing." />
+    <meta name="author" content="Dikshant Patodia" />
+    <link rel="canonical" href="https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Dikshant Patodia" />
+    <meta property="og:title" content="100% coverage is not confidence | Dikshant Patodia" />
+    <meta property="og:description" content="Coverage measures which lines ran, not whether the behaviour is protected. A suite can be green and still tell you nothing." />
+    <meta property="og:url" content="https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence" />
+    <meta property="og:image" content="https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2026-10-14" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="100% coverage is not confidence | Dikshant Patodia" />
+    <meta name="twitter:description" content="Coverage measures which lines ran, not whether the behaviour is protected. A suite can be green and still tell you nothing." />
+    <meta name="twitter:image" content="https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence/og.png" />
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"100% coverage is not confidence","description":"Coverage measures which lines ran, not whether the behaviour is protected. A suite can be green and still tell you nothing.","datePublished":"2026-10-14","dateModified":"2026-10-14","author":{"@type":"Person","name":"Dikshant Patodia","url":"https://www.dikshantpatodia.in/"},"publisher":{"@type":"Person","name":"Dikshant Patodia"},"mainEntityOfPage":"https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence","image":"https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence/og.png","keywords":"Testing, Jest, React Testing Library","articleSection":"Testing","wordCount":184}</script>
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dikshantpatodia.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.dikshantpatodia.in/blog"},{"@type":"ListItem","position":3,"name":"Testing","item":"https://www.dikshantpatodia.in/blog/category/testing"},{"@type":"ListItem","position":4,"name":"100% coverage is not confidence","item":"https://www.dikshantpatodia.in/blog/100-percent-coverage-is-not-confidence"}]}</script>
+    <!--/seo-->
+    <script type="module" crossorigin src="/assets/index-wPoS8HN4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-CoX4O-io.css">
+  </head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap site-header__inner"><a class="brand" href="/" aria-label="Dikshant Patodia — home"><span class="brand__mark" aria-hidden="true">DP</span><span>Dikshant Patodia</span></a><nav class="nav" aria-label="Primary"><a class="nav__link" href="/#work">Work<sup aria-hidden="true">01</sup></a><a class="nav__link" href="/#playground">Playground<sup aria-hidden="true">02</sup></a><a class="nav__link" href="/#leadership">Leadership<sup aria-hidden="true">03</sup></a><a class="nav__link" href="/#journal">Journal<sup aria-hidden="true">04</sup></a><a class="nav__link" href="/#contact">Contact<sup aria-hidden="true">05</sup></a><a class="nav__link" href="/blog" aria-current="page">Blog<sup aria-hidden="true">06</sup></a></nav><button type="button" class="nav__toggle" aria-expanded="false" aria-controls="mobile-nav"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>Menu</button></div></header><main id="main"><div class="wrap"><article class="post"><nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs__list"><li class="crumbs__item"><a href="/">Home</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog">Blog</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog/category/testing">Testing</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><span aria-current="page">100% coverage is not confidence</span></li></ol></nav><header class="post__head"><h1 class="post__title">100% coverage is not confidence</h1><p class="post__meta"><span class="badge">Testing</span><span class="idx">14 Oct 2026</span><span class="idx">1<!-- --> min read</span></p><p class="post__summary">Coverage measures which lines ran, not whether the behaviour is protected. A suite can be green and still tell you nothing.</p></header><div class="prose"><p>I have seen suites with high coverage that would happily pass while the feature they covered was broken. The lines executed; the assertions protected nothing.</p>
+<h2>The useful question</h2>
+<p>The useful question is not &quot;what percentage?&quot; but &quot;what would break, and would a test tell me?&quot; That reframes testing around the expensive failures rather than the easy lines.</p>
+<p>Over eight years I have written more than a thousand tests. The ones that earned their place all had the same shape: they failed loudly when a real behaviour changed, and they stayed quiet when the implementation was refactored.</p>
+<ul>
+<li>Test behaviour and contracts, not implementation details.</li>
+<li>Start where a regression would be most expensive.</li>
+<li>Keep the suite fast enough that it stays in the loop.</li>
+<li>Delete tests that protect nothing.</li>
+</ul>
+<h2>Coverage is a smell detector</h2>
+<p>Coverage is one input, and a weak one on its own. It is good at finding code that nothing exercises. It is bad at telling you whether what <em>is</em> exercised is verified.</p>
+<p>Confidence is the ability to ship on a Friday. Coverage is a hint on the way there, not the destination.</p></div><ul class="post__tags" aria-label="Tags"><li class="tag">Testing</li><li class="tag">Jest</li><li class="tag">React Testing Library</li></ul></article><nav class="post-nav" aria-label="More posts"><a class="post-nav__link" href="/blog/designing-a-component-library-teams-actually-adopt"><span class="idx">Older</span><span class="post-nav__title">Designing a component library teams actually adopt</span></a><a class="post-nav__link post-nav__link--next" href="/blog/the-hidden-cost-of-one-more-abstraction"><span class="idx">Newer</span><span class="post-nav__title">The hidden cost of one more abstraction</span></a></nav><p class="post__back"><a href="/blog">← All notes</a></p></div></main><footer class="site-footer wrap"><div class="site-footer__grid"><p class="colophon">© <!-- -->2026<!-- --> <!-- -->Dikshant Patodia<!-- -->. Set in Fraunces, Inter, and JetBrains Mono. Built with Vite, React, and Tailwind CSS, and served as static files from GitHub Pages. No trackers, no analytics, no cookies.</p><nav class="footer-links" aria-label="Footer"><a href="/#top">Back to top</a><a href="/blog">Blog</a><a href="https://github.com/dikshantpatodia" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://linkedin.com/in/dikshantpatodia" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="mailto:dikshantpatodia@gmail.com">Email</a></nav></div></footer></div>
+    <noscript>
+      <div style="max-width: 42rem; margin: 4rem auto; padding: 0 1.5rem; font-family: Georgia, serif; line-height: 1.6">
+        <h1>Dikshant Patodia — Lead Frontend Engineer</h1>
+        <p>
+          I develop frontend systems that stay fast under load, scale across teams, and hold up in
+          production: architecture, performance, design systems, and tests.
+        </p>
+        <p>
+          Email <a href="mailto:dikshantpatodia@gmail.com">dikshantpatodia@gmail.com</a> ·
+          <a href="https://linkedin.com/in/dikshantpatodia">LinkedIn</a> ·
+          <a href="https://github.com/dikshantpatodia">GitHub</a>
+        </p>
+        <p><a href="/blog">Read the blog</a></p>
+        <p style="color: #6f695d">This experience needs JavaScript enabled.</p>
+      </div>
+    </noscript>
+  </body>
+</html>
