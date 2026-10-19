@@ -25,7 +25,7 @@ import { renderOgPng } from './og-core.mjs'
 const ORIGIN = 'https://www.dikshantpatodia.in'
 const SITE_NAME = 'Dikshant Patodia'
 const DEFAULT_DESCRIPTION =
-  'Dikshant Patodia is a lead frontend engineer who architects systems that stay fast under load, scale across teams, and hold up in production — micro frontends, performance, design systems, and testing.'
+  'Dikshant Patodia is a senior frontend engineer who architects systems that stay fast under load, scale across teams, and hold up in production — micro frontends, performance, design systems, and testing.'
 
 const dist = fileURLToPath(new URL('../dist', import.meta.url))
 const contentDir = fileURLToPath(new URL('../content/blog', import.meta.url))
@@ -126,7 +126,7 @@ const PERSON = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: SITE_NAME,
-  jobTitle: 'Lead Frontend Engineer',
+  jobTitle: 'Senior Frontend Engineer',
   url: `${ORIGIN}/`,
   email: 'mailto:dikshantpatodia@gmail.com',
   sameAs: ['https://linkedin.com/in/dikshantpatodia', 'https://github.com/dikshantpatodia'],
@@ -147,7 +147,7 @@ const routes = [
     lastmod: latestActivity(posts),
     seo: () =>
       head({
-        title: 'Dikshant Patodia — Lead Frontend Engineer',
+        title: 'Dikshant Patodia — Senior Frontend Engineer',
         description: DEFAULT_DESCRIPTION,
         canonical: `${ORIGIN}/`,
         image: `${ORIGIN}/og.png`,

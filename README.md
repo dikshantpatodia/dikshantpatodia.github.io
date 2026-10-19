@@ -1,6 +1,6 @@
 # dikshantpatodia.github.io
 
-Portfolio of **Dikshant Patodia** - Lead Frontend Engineer. A deliberately
+Portfolio of **Dikshant Patodia** - Senior Frontend Engineer. A deliberately
 minimal, typography-led studio site, not a résumé: editorial case studies, an
 interactive engineering playground, and a blog of short engineering notes.
 

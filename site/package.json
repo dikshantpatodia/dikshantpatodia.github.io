@@ -3,7 +3,7 @@
   "private": true,
   "version": "3.0.0",
   "type": "module",
-  "description": "Dikshant Patodia — Lead Frontend Engineer. A typography-led engineering portfolio.",
+  "description": "Dikshant Patodia — Senior Frontend Engineer. A typography-led engineering portfolio.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",

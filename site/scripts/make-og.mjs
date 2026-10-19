@@ -10,7 +10,7 @@ import { writeFile } from 'node:fs/promises'
 import { renderOgPng } from './og-core.mjs'
 
 const png = renderOgPng({
-  eyebrow: 'DIKSHANT PATODIA — LEAD FRONTEND ENGINEER',
+  eyebrow: 'DIKSHANT PATODIA — SENIOR FRONTEND ENGINEER',
   title: 'Good interfaces are engineered, not assembled.',
   meta: '8+ years · micro frontends · 1000+ automated tests',
   subline: 'Architecture · Performance · Design systems · Testing',
