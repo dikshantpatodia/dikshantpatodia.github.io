@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f4ef" />
+
+    <!-- Set before first paint so reveal animations only hide content when JS is present. -->
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <noscript>
+      <style>.panel[hidden]{display:block!important}.playground__tabs{display:none!important}</style>
+    </noscript>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--seo-->
+    <title>Reverse engineer anything | Dikshant Patodia</title>
+    <meta name="description" content="You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="Dikshant Patodia" />
+    <link rel="canonical" href="https://www.dikshantpatodia.in/blog/reverse-engineer-anything/" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Dikshant Patodia" />
+    <meta property="og:title" content="Reverse engineer anything | Dikshant Patodia" />
+    <meta property="og:description" content="You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works." />
+    <meta property="og:url" content="https://www.dikshantpatodia.in/blog/reverse-engineer-anything/" />
+    <meta property="og:image" content="https://www.dikshantpatodia.in/blog/reverse-engineer-anything/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2026-10-27" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Reverse engineer anything | Dikshant Patodia" />
+    <meta name="twitter:description" content="You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works." />
+    <meta name="twitter:image" content="https://www.dikshantpatodia.in/blog/reverse-engineer-anything/og.png" />
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Reverse engineer anything","description":"You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works.","datePublished":"2026-10-27","dateModified":"2026-10-27","author":{"@type":"Person","name":"Dikshant Patodia","url":"https://www.dikshantpatodia.in/"},"publisher":{"@type":"Person","name":"Dikshant Patodia"},"mainEntityOfPage":"https://www.dikshantpatodia.in/blog/reverse-engineer-anything/","image":"https://www.dikshantpatodia.in/blog/reverse-engineer-anything/og.png","keywords":"Reverse engineering, Debugging, DevTools","articleSection":"Engineering practice","wordCount":814}</script>
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dikshantpatodia.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.dikshantpatodia.in/blog/"},{"@type":"ListItem","position":3,"name":"Engineering practice","item":"https://www.dikshantpatodia.in/blog/category/engineering-practice/"},{"@type":"ListItem","position":4,"name":"Reverse engineer anything","item":"https://www.dikshantpatodia.in/blog/reverse-engineer-anything/"}]}</script>
+    <!--/seo-->
+    <script type="module" crossorigin src="/assets/index-B5bl5zKM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-CoX4O-io.css">
+  </head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap site-header__inner"><a class="brand" href="/" aria-label="Dikshant Patodia — home"><span class="brand__mark" aria-hidden="true">DP</span><span>Dikshant Patodia</span></a><nav class="nav" aria-label="Primary"><a class="nav__link" href="/#work">Work<sup aria-hidden="true">01</sup></a><a class="nav__link" href="/#playground">Playground<sup aria-hidden="true">02</sup></a><a class="nav__link" href="/#leadership">Leadership<sup aria-hidden="true">03</sup></a><a class="nav__link" href="/#journal">Journal<sup aria-hidden="true">04</sup></a><a class="nav__link" href="/#contact">Contact<sup aria-hidden="true">05</sup></a><a class="nav__link" href="/blog/" aria-current="page">Blog<sup aria-hidden="true">06</sup></a></nav><button type="button" class="nav__toggle" aria-expanded="false" aria-controls="mobile-nav"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>Menu</button></div></header><main id="main"><div class="wrap"><article class="post"><nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs__list"><li class="crumbs__item"><a href="/">Home</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog/">Blog</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog/category/engineering-practice/">Engineering practice</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><span aria-current="page">Reverse engineer anything</span></li></ol></nav><header class="post__head"><h1 class="post__title">Reverse engineer anything</h1><p class="post__meta"><span class="badge">Engineering practice</span><span class="idx">27 Oct 2026</span><span class="idx">5<!-- --> min read</span></p><p class="post__summary">You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works.</p></header><div class="prose"><p>Most systems are legible long before they are readable. You can learn what a page, a bundle, or a library really does without reading it end to end — but only if you stop trying to read and start asking it questions.</p>
+<p>I have spent more hours than I would like reading a minified bundle before accepting that reading was the slowest available way to understand it.</p>
+<h2>Start with the behaviour, not the entry point</h2>
+<p>When I inherit an unfamiliar frontend, the instinct is to open the entry file and read downward. That works for a to-do app. It fails for anything that has survived contact with a real product, because the entry point describes the happy path — the route somebody remembered to keep simple.</p>
+<p>The better question is smaller:</p>
+<blockquote>
+<p>What must be true for this behaviour to happen?</p>
+</blockquote>
+<p>&quot;What does this code do?&quot; asks you to hold the whole system in your head before you can answer. &quot;What must be true?&quot; asks for one observation and one guess. That difference is the entire method.</p>
+<h2>Five moves</h2>
+<p><strong>Observe.</strong> One behaviour, stated precisely. &quot;It feels slow&quot; is a mood, not a measurement. &quot;The page paints, then the hero image arrives and pushes the headline down&quot; is something you can work with.</p>
+<p><strong>Hypothesise.</strong> The smallest mechanism that would produce exactly that, and nothing more. One cause, phrased so that it could be wrong. A hypothesis you cannot lose is not a hypothesis.</p>
+<p><strong>Perturb.</strong> Change one thing. One. Change three and you have learned that <em>something</em> happened, not which.</p>
+<p><strong>Predict.</strong> Say what should change if you are right — out loud, in the commit message, to whoever is nearby. This is the step everyone skips, and the only one that converts fiddling into knowledge.</p>
+<p><strong>Confirm.</strong> If the prediction holds, you have a mechanism rather than a coincidence. If it does not, you have something better than a wrong guess: a ruled-out family of explanations.</p>
+<p>Two failed predictions in a row mean your <em>model of the shape</em> is wrong, not your guess. Stop tuning the detail and go up a level. Is this even the layer that owns the behaviour?</p>
+<h2>On a page you have never seen</h2>
+<p>Take a route you did not build. Before opening a single component:</p>
+<ul>
+<li>Disable JavaScript. What still renders is the server&#39;s contribution; what disappears is the client&#39;s.</li>
+<li>Block one third-party domain at a time. The page will tell you which vendor it cannot live without.</li>
+<li>Throttle the network and reload. Whatever appears last is on the critical path, whether or not anyone intended it to be.</li>
+</ul>
+<p>Each of those is a perturbation with an obvious prediction. You are not guessing at the architecture; you are asking it questions and writing down the answers.</p>
+<p>The same loop applies to a bundle that has quietly become one thing. Move one import behind a route boundary. If the first-load graph for a neighbouring route shrinks, you found a real edge. If it does not, the module you moved was not the one loading it — something else was pulling it in transitively. That negative result is usually the more valuable one, because transitive dependencies are exactly where bundles go to hide.</p>
+<h2>On a library you are adopting</h2>
+<p>Read the public API, not the source. Then write the smallest program that uses it, and break it on purpose: empty state, one item, ten thousand items, the error path, the prop that is technically optional but obviously is not.</p>
+<p>The edges are the contract. Documentation describes the happy path, because that is what the author was thinking about while writing it. The behaviour at the edges is what you will actually have to live with.</p>
+<h2>The trap</h2>
+<p>Reverse engineering tells you what <strong>is</strong>. It cannot tell you what was <strong>meant</strong>.</p>
+<p>That strange conditional with the <code>// do not remove</code> above it usually has a reason, and the reason may have retired three years ago. Do not preserve a bug because you found it in the code. That is cargo-culting with extra steps.</p>
+<p>And keep the scope honest: this is a method for systems you own, are employed to work on, or are explicitly allowed to inspect. Understanding how something works is not the same as copying it. The goal is a model you can reason with, not an implementation you can paste.</p>
+<h2>What you are actually building</h2>
+<p>A model with edges — one that can tell you not only how the system behaves, but where it will break.</p>
+<p>The test of understanding is not whether you can describe the system. It is whether you can predict it. That is the same skill you need before you change it, and the reason I trust a prediction over a walkthrough every time.</p>
+<p>The best codebase knowledge is not the kind you read your way into. It is the kind you earn one prediction at a time.</p></div><ul class="post__tags" aria-label="Tags"><li class="tag">Reverse engineering</li><li class="tag">Debugging</li><li class="tag">DevTools</li></ul></article><nav class="post-nav" aria-label="More posts"><a class="post-nav__link" href="/blog/the-hidden-cost-of-one-more-abstraction/"><span class="idx">Older</span><span class="post-nav__title">The hidden cost of one more abstraction</span></a></nav><p class="post__back"><a href="/blog/">← All notes</a></p></div></main><footer class="site-footer wrap"><div class="site-footer__grid"><p class="colophon">© <!-- -->2026<!-- --> <!-- -->Dikshant Patodia<!-- -->. Set in Fraunces, Inter, and JetBrains Mono. Built with Vite, React, and Tailwind CSS, and served as static files from GitHub Pages. No trackers, no analytics, no cookies.</p><nav class="footer-links" aria-label="Footer"><a href="/#top">Back to top</a><a href="/blog/">Blog</a><a href="https://github.com/dikshantpatodia" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://linkedin.com/in/dikshantpatodia" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="mailto:dikshantpatodia@gmail.com">Email</a></nav></div></footer></div>
+  </body>
+</html>

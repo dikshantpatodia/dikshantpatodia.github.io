@@ -76,6 +76,7 @@ function head({ title, description, canonical, type = 'website', image, publishe
   const tags = [
     `<title>${escapeHtml(title)}</title>`,
     `<meta name="description" content="${escapeHtml(description)}" />`,
+    `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />`,
     `<meta name="author" content="${SITE_NAME}" />`,
     `<link rel="canonical" href="${canonical}" />`,
     '',
