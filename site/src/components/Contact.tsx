@@ -14,12 +14,6 @@ export function Contact() {
             Let’s talk about the parts that are <em>hard to retrofit</em>.
           </h2>
           <CopyEmail email={profile.email} />
-          <p className="panel__note">
-            Prefer a document?{' '}
-            <a className="link" href={profile.resumeHref} download>
-              Download the résumé (PDF)
-            </a>
-          </p>
         </Reveal>
 
         <Reveal delay={0.1}>

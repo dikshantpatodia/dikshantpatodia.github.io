@@ -24,7 +24,6 @@ export const profile: Profile = {
   linkedin: 'https://linkedin.com/in/dikshantpatodia',
   github: 'https://github.com/dikshantpatodia',
   location: 'India · IST (UTC+5:30)',
-  resumeHref: '/dikshant_patodia_senior_frontend_engineer.pdf',
   headline: 'Good interfaces are engineered, not assembled.',
   lede: 'I develop frontend systems that stay fast under load, scale across teams, and hold up in production. Eight years of it: micro frontends many times over, Core Web Vitals moved on several products, and test suites measured in the thousands.',
 }

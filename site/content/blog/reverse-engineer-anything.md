@@ -1,6 +1,6 @@
 ---
 title: Reverse engineer anything
-date: 2026-10-27
+date: 2026-10-22
 category: Engineering practice
 summary: You do not need a tour guide to understand a system you did not write. Change one thing, predict what will happen, and let the result teach you how it actually works.
 tags: Reverse engineering, Debugging, DevTools

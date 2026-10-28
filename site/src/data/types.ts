@@ -8,7 +8,6 @@ export interface Profile {
   linkedin: string
   github: string
   location: string
-  resumeHref: string
   headline: string
   lede: string
 }
