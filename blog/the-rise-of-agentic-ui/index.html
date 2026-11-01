@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f4ef" />
+
+    <!-- Set before first paint so reveal animations only hide content when JS is present. -->
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <noscript>
+      <style>.panel[hidden]{display:block!important}.playground__tabs{display:none!important}</style>
+    </noscript>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--seo-->
+    <title>The rise of agentic UI: interfaces that think and act | Dikshant Patodia</title>
+    <meta name="description" content="Agentic interfaces turn clicks into goals. A React and TypeScript walkthrough of context, tools, approvals, streaming and MCP — plus the failures that decide whether it ships." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="Dikshant Patodia" />
+    <link rel="canonical" href="https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/" />
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Dikshant Patodia" />
+    <meta property="og:title" content="The rise of agentic UI: interfaces that think and act | Dikshant Patodia" />
+    <meta property="og:description" content="Agentic interfaces turn clicks into goals. A React and TypeScript walkthrough of context, tools, approvals, streaming and MCP — plus the failures that decide whether it ships." />
+    <meta property="og:url" content="https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/" />
+    <meta property="og:image" content="https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="article:published_time" content="2026-10-27" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The rise of agentic UI: interfaces that think and act | Dikshant Patodia" />
+    <meta name="twitter:description" content="Agentic interfaces turn clicks into goals. A React and TypeScript walkthrough of context, tools, approvals, streaming and MCP — plus the failures that decide whether it ships." />
+    <meta name="twitter:image" content="https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/og.png" />
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The rise of agentic UI: interfaces that think and act","description":"Agentic interfaces turn clicks into goals. A React and TypeScript walkthrough of context, tools, approvals, streaming and MCP — plus the failures that decide whether it ships.","datePublished":"2026-10-27","dateModified":"2026-10-27","author":{"@type":"Person","name":"Dikshant Patodia","url":"https://www.dikshantpatodia.in/"},"publisher":{"@type":"Person","name":"Dikshant Patodia"},"mainEntityOfPage":"https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/","image":"https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/og.png","keywords":"Agentic UI, MCP, React, AI agents, Frontend architecture","articleSection":"AI","wordCount":4338}</script>
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dikshantpatodia.in/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.dikshantpatodia.in/blog/"},{"@type":"ListItem","position":3,"name":"AI","item":"https://www.dikshantpatodia.in/blog/category/ai/"},{"@type":"ListItem","position":4,"name":"The rise of agentic UI: interfaces that think and act","item":"https://www.dikshantpatodia.in/blog/the-rise-of-agentic-ui/"}]}</script>
+    <!--/seo-->
+    <script type="module" crossorigin src="/assets/index-C5mz5nx7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-D2qL8Tzl.css">
+  </head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap site-header__inner"><a class="brand" href="/" aria-label="Dikshant Patodia — home"><span class="brand__mark" aria-hidden="true">DP</span><span>Dikshant Patodia</span></a><nav class="nav" aria-label="Primary"><a class="nav__link" href="/#work">Work<sup aria-hidden="true">01</sup></a><a class="nav__link" href="/#playground">Playground<sup aria-hidden="true">02</sup></a><a class="nav__link" href="/#leadership">Leadership<sup aria-hidden="true">03</sup></a><a class="nav__link" href="/#journal">Journal<sup aria-hidden="true">04</sup></a><a class="nav__link" href="/#contact">Contact<sup aria-hidden="true">05</sup></a><a class="nav__link" href="/blog/" aria-current="page">Blog<sup aria-hidden="true">06</sup></a></nav><button type="button" class="nav__toggle" aria-expanded="false" aria-controls="mobile-nav"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>Menu</button></div></header><main id="main"><div class="wrap"><article class="post"><nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs__list"><li class="crumbs__item"><a href="/">Home</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog/">Blog</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><a href="/blog/category/ai/">AI</a><span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><span aria-current="page">The rise of agentic UI: interfaces that think and act</span></li></ol></nav><header class="post__head"><h1 class="post__title">The rise of agentic UI: interfaces that think and act</h1><p class="post__meta"><span class="badge">AI</span><span class="idx">27 Oct 2026</span><span class="idx">23<!-- --> min read</span></p><p class="post__summary">Agentic interfaces turn clicks into goals. A React and TypeScript walkthrough of context, tools, approvals, streaming and MCP — plus the failures that decide whether it ships.</p></header><div class="prose"><p>Here is a request that breaks most dashboards: <em>find every invoice that failed twice this week, re-run them, and ask me before you touch anything over fifty thousand rupees.</em></p>
+<p>A traditional UI cannot accept that sentence. It can accept a filter, a selection, a bulk action, and a confirmation dialog — four primitives that the user has to know exist and assemble in the right order. The sentence is a goal. The dashboard is a set of verbs. The distance between those two is the entire argument for agentic UI.</p>
+<p>We are not talking about a chat box bolted onto a sidebar. The interesting shift is structural: the interface stops being a menu of things you can do and becomes a runtime that can plan, call tools, and act on your behalf — with a checkpoint where a human still says yes.</p>
+<p>I want to be precise about what is real here, because this is a space where a weekend demo and a production system look identical in a screenshot. So I&#39;ll separate the parts I would ship from the parts I would not, and mark the places where the ecosystem is still moving.</p>
+<h2>What &quot;agentic&quot; actually means</h2>
+<p>Three things get called AI UI, and conflating them is why the discourse is a mess.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Traditional UI</th>
+<th>Chatbot</th>
+<th>Agentic UI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Input</strong></td>
+<td>Clicks, forms, commands</td>
+<td>Questions</td>
+<td>Goals, in natural language</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Deterministic screen state</td>
+<td>Prose</td>
+<td>Prose plus real actions</td>
+</tr>
+<tr>
+<td><strong>Control</strong></td>
+<td>User drives every step</td>
+<td>User reads, then acts manually</td>
+<td>System plans and acts, user approves</td>
+</tr>
+<tr>
+<td><strong>Failure mode</strong></td>
+<td>Wrong button, wrong data</td>
+<td>Confidently wrong answer</td>
+<td>Wrong action, taken at scale</td>
+</tr>
+<tr>
+<td><strong>Trust comes from</strong></td>
+<td>Predictability</td>
+<td>Nothing much</td>
+<td>Reversibility and oversight</td>
+</tr>
+</tbody></table>
+<p>A chatbot answers. An agent acts. The difference is not the language model — it is the loop: <em>observe context, propose a plan, call a tool, read the result, decide what to do next.</em> Remove the tools and you have autocomplete with manners. Remove the approval gate and you have a script with a language model attached, and nobody wants to be the person who explains that to legal.</p>
+<p>There is a useful ladder here, and most products are on the second rung:</p>
+<ol>
+<li><strong>Answer</strong> — retrieve and summarise. Read-only, low risk, already common.</li>
+<li><strong>Suggest</strong> — propose an action, pre-fill a form, highlight a record. Still human-executed.</li>
+<li><strong>Act with approval</strong> — the system prepares and stages a change; a human approves the effect.</li>
+<li><strong>Act within policy</strong> — autonomous, but only inside a narrow, pre-declared envelope with spend and blast-radius limits.</li>
+</ol>
+<p>Rung four is where the interesting engineering is, and where almost nobody should start. The jump from three to four is not a model upgrade. It is an authorization, auditing and rollback problem wearing an AI costume.</p>
+<h2>The architecture of an interface that acts</h2>
+<p>Every credible design I have seen has the same six parts. The names vary; the boundaries do not.</p>
+<pre><code class="language-mermaid">flowchart LR
+  U[&quot;User intent&quot;] --&gt; UI[&quot;UI shell (React)&quot;]
+  UI --&gt; C[&quot;Context assembler&quot;]
+  C --&gt; O[&quot;Orchestrator&quot;]
+  O --&gt; M[&quot;Model&quot;]
+  M --&gt;|&quot;tool call&quot;| G[&quot;Tool gateway&quot;]
+  G --&gt; A{&quot;Approval required?&quot;}
+  A --&gt;|&quot;yes&quot;| P[&quot;Approval UI&quot;]
+  P --&gt;|&quot;approve&quot;| G
+  A --&gt;|&quot;no&quot;| X[&quot;External systems&quot;]
+  G --&gt; X
+  X --&gt;|&quot;result&quot;| O
+  O --&gt;|&quot;events&quot;| UI
+</code></pre>
+<p><strong>The UI shell</strong> renders state and collects consent. It holds no credentials, executes no tools, and — this matters — makes no authorization decisions. Anything the browser decides can be replayed by the browser.</p>
+<p><strong>The context assembler</strong> decides what the model sees. Current page, selected record, the user&#39;s role, the last few turns, a summary of older history, and a hard token budget. This layer is where most quality lives. A model with the wrong context is not a reasoning problem; it is a plumbing problem, and no prompt fixes it.</p>
+<p><strong>The orchestrator</strong> runs the loop: call the model, validate its output, execute or queue tools, feed results back, stop on success, budget exhaustion, or a step cap. It is a state machine, not a <code>while (true)</code>. It also owns persistence, so a run survives a page refresh.</p>
+<p><strong>The model</strong> is a stateless function with a schema. It proposes. It never executes. That sentence should be in your architecture doc, because half the bad designs I have reviewed assume the opposite.</p>
+<p><strong>The tool gateway</strong> is the only component that touches the outside world. It validates arguments, checks permissions against the acting user, enforces idempotency, writes an audit record, and returns a bounded result.</p>
+<p><strong>The approval layer</strong> is not a modal with an &quot;OK&quot; button. It is a server-side gate keyed to a specific tool call, with an expiry, a human&#39;s identity attached, and a record of what was approved.</p>
+<p>One rule holds the whole thing together: <strong>the model proposes, the gateway disposes.</strong> If a single component both decides and executes, you have built a very fast way to lose data.</p>
+<h2>A run, end to end</h2>
+<p>Take a project management tool. The milestone view is open. A user types: <em>&quot;Push the Atlas launch by a week, but keep the customer demo on the original date.&quot;</em></p>
+<pre><code class="language-mermaid">sequenceDiagram
+  actor User
+  participant UI as React UI
+  participant API as Agent API
+  participant LLM as Model
+  participant GW as Tool gateway
+  participant PM as Project system
+
+  User-&gt;&gt;UI: &quot;Push Atlas by a week, keep the demo&quot;
+  UI-&gt;&gt;API: POST /agent/runs
+  API-&gt;&gt;LLM: intent + page context + tool schemas
+  LLM--&gt;&gt;API: tool_call(listMilestones)
+  API-&gt;&gt;GW: execute (safe, read)
+  GW-&gt;&gt;PM: GET /milestones?project=atlas
+  PM--&gt;&gt;GW: milestones + dependencies
+  GW--&gt;&gt;API: result
+  API-&gt;&gt;LLM: result
+  LLM--&gt;&gt;API: plan + tool_call(updateMilestone)
+  API--&gt;&gt;UI: approval_required + diff
+  UI--&gt;&gt;User: &quot;Atlas GA moves 12 Nov → 19 Nov. Demo unchanged.&quot;
+  User-&gt;&gt;UI: Approve
+  UI-&gt;&gt;API: POST /agent/runs/{id}/approvals
+  API-&gt;&gt;GW: execute (write, idempotency key)
+  GW-&gt;&gt;PM: PATCH /milestones/ga
+  PM--&gt;&gt;GW: 200 + previous state
+  GW--&gt;&gt;API: result + undo token
+  API-&gt;&gt;LLM: result
+  LLM--&gt;&gt;API: final summary
+  API--&gt;&gt;UI: done
+</code></pre>
+<p>Notice what the model did not do. It did not touch the database. It did not decide that the user is allowed to edit milestones — the gateway checked that against the real session. It did not compute the new date reliably either; dates are arithmetic, and arithmetic belongs in a tool. Ask a language model to add seven days to a date and it will usually be right, which is worse than always being wrong, because &quot;usually&quot; is how you get a milestone landing on a Sunday.</p>
+<p>The orchestrator&#39;s state machine is the actual contract:</p>
+<pre><code class="language-mermaid">stateDiagram-v2
+  [*] --&gt; Planning
+  Planning --&gt; Executing: safe tool call
+  Planning --&gt; AwaitingApproval: write or destructive call
+  AwaitingApproval --&gt; Executing: approved
+  AwaitingApproval --&gt; Cancelled: rejected or expired
+  Executing --&gt; Planning: result (loop continues)
+  Executing --&gt; Failed: tool error
+  Failed --&gt; Planning: retry if idempotent
+  Executing --&gt; Completed: model returns final answer
+  Completed --&gt; [*]
+  Cancelled --&gt; [*]
+</code></pre>
+<p>Every arrow is a place where you need persistence, a timeout, and an audit entry. That is the unglamorous 80% of this work.</p>
+<h2>The API between the two halves</h2>
+<p>The client and the agent runtime talk over a stream. I use newline-delimited JSON rather than SSE for one reason: SSE requires each payload to be a string, so structured events end up double-encoded. NDJSON over a <code>fetch</code> stream is smaller and simpler to parse.</p>
+<pre><code class="language-http">POST /api/agent/runs
+Content-Type: application/json
+
+{
+  &quot;intent&quot;: &quot;Push the Atlas launch by a week, keep the demo&quot;,
+  &quot;threadId&quot;: &quot;th_9f2c&quot;,
+  &quot;context&quot;: { &quot;route&quot;: &quot;/projects/atlas&quot;, &quot;selectedId&quot;: &quot;ms_ga&quot; }
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/x-ndjson
+
+{&quot;type&quot;:&quot;plan&quot;,&quot;steps&quot;:[{&quot;id&quot;:&quot;s1&quot;,&quot;label&quot;:&quot;Read Atlas milestones&quot;,&quot;status&quot;:&quot;running&quot;}]}
+{&quot;type&quot;:&quot;tool_call&quot;,&quot;callId&quot;:&quot;tc_1&quot;,&quot;name&quot;:&quot;listMilestones&quot;,&quot;args&quot;:{&quot;project&quot;:&quot;atlas&quot;}}
+{&quot;type&quot;:&quot;tool_result&quot;,&quot;callId&quot;:&quot;tc_1&quot;,&quot;ok&quot;:true,&quot;data&quot;:{&quot;milestones&quot;:[&quot;...&quot;]}}
+{&quot;type&quot;:&quot;approval_required&quot;,&quot;callId&quot;:&quot;tc_2&quot;,&quot;preview&quot;:{&quot;tool&quot;:&quot;updateMilestone&quot;,&quot;effect&quot;:&quot;Atlas GA: 2026-11-12 → 2026-11-19&quot;,&quot;risk&quot;:&quot;write&quot;}}
+</code></pre>
+<pre><code class="language-http">POST /api/agent/runs/run_771/approvals
+Content-Type: application/json
+
+{ &quot;callId&quot;: &quot;tc_2&quot;, &quot;decision&quot;: &quot;approve&quot; }
+</code></pre>
+<p>Two details that are easy to get wrong. The approval is keyed to <code>callId</code>, not to the run, so approving one write cannot be replayed to authorise a different one. And the run id is server-generated and bound to the session — never trust a client-supplied approval token.</p>
+<h2>Building it in React and TypeScript</h2>
+<p>Start with the event model. If your event types are loose, every component becomes a <code>switch</code> on strings and the whole thing rots in a month.</p>
+<pre><code class="language-ts">// agent-events.ts
+export type PlanStep = {
+  id: string
+  label: string
+  status: &#39;pending&#39; | &#39;running&#39; | &#39;done&#39; | &#39;failed&#39;
+}
+
+export type ApprovalPreview = {
+  tool: string
+  effect: string
+  risk: &#39;read&#39; | &#39;write&#39; | &#39;destructive&#39;
+  diff?: string
+  expiresAt: string
+}
+
+export type AgentEvent =
+  | { type: &#39;token&#39;; text: string }
+  | { type: &#39;plan&#39;; steps: PlanStep[] }
+  | { type: &#39;step&#39;; id: string; status: PlanStep[&#39;status&#39;] }
+  | { type: &#39;tool_call&#39;; callId: string; name: string; args: unknown }
+  | { type: &#39;tool_result&#39;; callId: string; ok: boolean; data: unknown }
+  | { type: &#39;approval_required&#39;; callId: string; preview: ApprovalPreview }
+  | { type: &#39;error&#39;; code: string; message: string; retryable: boolean }
+  | { type: &#39;done&#39;; runId: string }
+</code></pre>
+<p>A discriminated union here buys you exhaustiveness checking. When the backend adds <code>&#39;clarification_required&#39;</code> — and it will — the compiler tells you every place that needs to handle it. That is worth more than any amount of prompt tuning.</p>
+<p>The transport is a small hook. Note the buffer: chunks split mid-line all the time, and a naive <code>JSON.parse</code> on each chunk will fail in production and never in your test.</p>
+<pre><code class="language-ts">// use-agent-run.ts
+import { useCallback, useReducer, useRef } from &#39;react&#39;
+
+type State = {
+  status: &#39;idle&#39; | &#39;running&#39; | &#39;awaiting_approval&#39; | &#39;done&#39; | &#39;error&#39;
+  steps: PlanStep[]
+  messages: { role: &#39;user&#39; | &#39;assistant&#39;; text: string }[]
+  approval?: { callId: string; preview: ApprovalPreview }
+  error?: { code: string; message: string }
+}
+
+export function useAgentRun() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const abortRef = useRef&lt;AbortController | null&gt;(null)
+
+  const start = useCallback(async (intent: string) =&gt; {
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
+
+    const res = await fetch(&#39;/api/agent/runs&#39;, {
+      method: &#39;POST&#39;,
+      headers: { &#39;content-type&#39;: &#39;application/json&#39; },
+      body: JSON.stringify({ intent }),
+      signal: controller.signal,
+    })
+
+    if (!res.ok || !res.body) {
+      dispatch({ type: &#39;failed&#39;, code: `http_${res.status}` })
+      return
+    }
+
+    const reader = res.body.pipeThrough(new TextDecoderStream()).getReader()
+    let buffer = &#39;&#39;
+
+    while (true) {
+      const { value, done } = await reader.read()
+      if (done) break
+
+      buffer += value
+      const lines = buffer.split(&#39;\n&#39;)
+      buffer = lines.pop() ?? &#39;&#39; // keep the partial line
+
+      for (const line of lines) {
+        if (!line.trim()) continue
+        dispatch({ type: &#39;event&#39;, event: JSON.parse(line) as AgentEvent })
+      }
+    }
+  }, [])
+
+  const decide = useCallback(async (callId: string, decision: &#39;approve&#39; | &#39;reject&#39;) =&gt; {
+    await fetch(`/api/agent/approvals`, {
+      method: &#39;POST&#39;,
+      headers: { &#39;content-type&#39;: &#39;application/json&#39; },
+      body: JSON.stringify({ callId, decision }),
+    })
+  }, [])
+
+  const cancel = useCallback(() =&gt; abortRef.current?.abort(), [])
+
+  return { state, start, decide, cancel }
+}
+</code></pre>
+<p><strong>What is real here:</strong> the reducer, the buffering, and the abort handling are the same shape I have used in production. <strong>What is missing:</strong> reconnect-after-drop, run resumption by id, and backpressure. Those are three separate features, not three lines.</p>
+<p>The approval card is where trust is won or lost. Show the effect, not the tool name. &quot;Run <code>updateMilestone</code>&quot; means nothing to a user; &quot;Atlas GA moves 12 Nov → 19 Nov&quot; means everything.</p>
+<pre><code class="language-tsx">export function ApprovalCard({
+  callId,
+  preview,
+  onDecide,
+}: {
+  callId: string
+  preview: ApprovalPreview
+  onDecide: (callId: string, decision: &#39;approve&#39; | &#39;reject&#39;) =&gt; void
+}) {
+  const [acknowledged, setAcknowledged] = useState(false)
+  const destructive = preview.risk === &#39;destructive&#39;
+
+  return (
+    &lt;section className=&quot;approval&quot; aria-labelledby={`approval-${callId}`}&gt;
+      &lt;h3 id={`approval-${callId}`}&gt;This needs your approval&lt;/h3&gt;
+      &lt;p className=&quot;approval__effect&quot;&gt;{preview.effect}&lt;/p&gt;
+      {preview.diff &amp;&amp; &lt;pre className=&quot;approval__diff&quot;&gt;{preview.diff}&lt;/pre&gt;}
+
+      {destructive &amp;&amp; (
+        &lt;label className=&quot;approval__ack&quot;&gt;
+          &lt;input
+            type=&quot;checkbox&quot;
+            checked={acknowledged}
+            onChange={(e) =&gt; setAcknowledged(e.target.checked)}
+          /&gt;
+          I understand this cannot be undone
+        &lt;/label&gt;
+      )}
+
+      &lt;div className=&quot;approval__actions&quot;&gt;
+        &lt;button onClick={() =&gt; onDecide(callId, &#39;reject&#39;)}&gt;Reject&lt;/button&gt;
+        &lt;button
+          disabled={destructive &amp;&amp; !acknowledged}
+          onClick={() =&gt; onDecide(callId, &#39;approve&#39;)}
+        &gt;
+          Approve
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}
+</code></pre>
+<p>The checkbox is deliberately not pre-checked. If every approval is one click, users stop reading by the third run — an actually measurable pattern in every confirmation flow ever shipped, from cookie banners to deploy buttons.</p>
+<p>On the server, the tool gateway is where the model&#39;s output stops being special and becomes untrusted input:</p>
+<pre><code class="language-ts">// gateway.ts
+export async function executeTool(call: ToolCall, ctx: RequestContext) {
+  const tool = registry[call.name]
+  if (!tool) throw new ToolError(&#39;unknown_tool&#39;, 400)
+
+  // 1. Shape: the model can emit anything, including fields you never defined
+  const args = tool.schema.parse(call.args)
+
+  // 2. Permission: checked against the human&#39;s session, not the model&#39;s intent
+  await authorize(ctx.actor, tool.scope, args)
+
+  // 3. Consent: high-risk calls need an unexpired approval for this exact callId
+  if (tool.risk !== &#39;read&#39;) {
+    const approval = await approvals.find(call.callId)
+    if (!approval || approval.actorId !== ctx.actor.id) {
+      throw new ToolError(&#39;approval_required&#39;, 409)
+    }
+  }
+
+  // 4. Idempotency: a retry must not create a second invoice
+  return tool.run(args, {
+    idempotencyKey: call.callId,
+    actor: ctx.actor.id,
+    signal: ctx.signal,
+  })
+}
+</code></pre>
+<p>Four checks, four failure modes, all boring on purpose. <code>schema.parse</code> is zod, valibot, or whatever you already use — the library does not matter. What matters is that the model&#39;s arguments are never passed through untouched.</p>
+<h2>Streaming, timelines and generated components</h2>
+<p>A single spinner for a twenty-second run is a product failure. Users tolerate slow if they can see progress, and they do not tolerate opaque.</p>
+<p>There are three streams, and they deserve three treatments:</p>
+<ul>
+<li><strong>Tokens</strong> go into the message body, batched per animation frame.</li>
+<li><strong>Plan steps</strong> go into a timeline, one row per step, with a status.</li>
+<li><strong>Tool events</strong> go into the timeline too, but with a collapsed result payload.</li>
+</ul>
+<p>Batching tokens matters more than it sounds. A naive implementation calls <code>setState</code> per token, which at fifty tokens a second means fifty renders a second of a growing string. Coalescing into <code>requestAnimationFrame</code> cuts that to display rate and makes the whole panel feel calmer.</p>
+<pre><code class="language-tsx">function Timeline({ steps }: { steps: PlanStep[] }) {
+  return (
+    &lt;ol className=&quot;timeline&quot;&gt;
+      {steps.map((step) =&gt; (
+        &lt;li key={step.id} data-status={step.status}&gt;
+          &lt;span className=&quot;timeline__dot&quot; aria-hidden=&quot;true&quot; /&gt;
+          &lt;span&gt;{step.label}&lt;/span&gt;
+          &lt;span className=&quot;visually-hidden&quot;&gt;{statusLabel(step.status)}&lt;/span&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ol&gt;
+  )
+}
+</code></pre>
+<p>Accessibility needs a decision here, not a library. Streaming text should not be announced token by token — screen readers will produce a stutter. Put <code>aria-live=&quot;polite&quot;</code> on a separate, low-frequency status region (&quot;Reading milestones&quot;, &quot;Waiting for approval&quot;) and leave the transcript out of the live region entirely. The timeline above uses visually hidden status text precisely so that a step change is announced once, at the row level.</p>
+<p>Now the controversial part: <strong>dynamic components</strong>. The tempting version lets the model emit JSX or HTML, which you then render. Do not do this. You have built a remote code execution feature and called it a design system.</p>
+<p>The version that survives review is a descriptor plus an allowlisted registry:</p>
+<pre><code class="language-ts">// blocks.ts — the only things the model is allowed to render
+export const blocks = {
+  table: lazy(() =&gt; import(&#39;./blocks/DataTable&#39;)),
+  chart: lazy(() =&gt; import(&#39;./blocks/Chart&#39;)),
+  diff: lazy(() =&gt; import(&#39;./blocks/DiffView&#39;)),
+} as const
+
+export type BlockKind = keyof typeof blocks
+
+export type BlockDescriptor = {
+  kind: BlockKind
+  title: string
+  data: unknown // validated per-kind by the block, not by the model
+}
+</code></pre>
+<pre><code class="language-tsx">export function AgentBlock({ block }: { block: BlockDescriptor }) {
+  const Component = blocks[block.kind]
+  if (!Component) return null // unknown kind: render nothing, log it
+  return (
+    &lt;Suspense fallback={&lt;BlockSkeleton /&gt;}&gt;
+      &lt;Component title={block.title} data={block.data} /&gt;
+    &lt;/Suspense&gt;
+  )
+}
+</code></pre>
+<p>The model chooses <em>which</em> of your components to show. It does not choose <em>what</em> they are made of. You keep the design system, the accessibility guarantees, the bundle boundaries, and the tests. You lose some novelty. That is the trade, and it is a good one.</p>
+<p>I would go further: generate layout only in prototypes. In a product with more than one screen, an interface that rearranges itself per query is a support burden and an accessibility hazard, because the user&#39;s spatial memory is part of the interface.</p>
+<h2>MCP: the integration layer, not the product</h2>
+<p>The Model Context Protocol is an open protocol for exposing tools, resources and prompts to a model host over JSON-RPC. Anthropic published it in late 2024, and it has since been adopted well beyond Anthropic&#39;s own products. The reason it matters to frontend engineers is mundane: without it, every agent integration is bespoke. With it, a project management system ships one MCP server and every compatible host can use it.</p>
+<pre><code class="language-mermaid">flowchart TB
+  subgraph Host[&quot;MCP host — your app or IDE&quot;]
+    R[&quot;Agent runtime&quot;]
+    C1[&quot;MCP client A&quot;]
+    C2[&quot;MCP client B&quot;]
+  end
+  C1 &lt;--&gt;|&quot;JSON-RPC&quot;| S1[&quot;Server: project management&quot;]
+  C2 &lt;--&gt;|&quot;JSON-RPC&quot;| S2[&quot;Server: filesystem&quot;]
+  S1 --&gt; D1[(&quot;PM database&quot;)]
+  S2 --&gt; D2[(&quot;Local files&quot;)]
+  R --&gt; C1
+  R --&gt; C2
+</code></pre>
+<p>The three primitives are worth internalising:</p>
+<ul>
+<li><strong>Tools</strong> are functions the model can call. They are the dangerous ones.</li>
+<li><strong>Resources</strong> are readable context, addressed by URI. They are the safe ones.</li>
+<li><strong>Prompts</strong> are reusable templates the user can invoke explicitly.</li>
+</ul>
+<p>Transports have changed more than once — stdio for local servers, then HTTP with SSE, then Streamable HTTP. If you are building today, read the current specification rather than a blog post from a year ago, including this one. The auth story (OAuth-based flows for remote servers, and the warning against passing a client&#39;s token straight through to a third-party server) is the part most likely to have moved by the time you read it.</p>
+<p>The honest assessment: MCP solves discovery and invocation. It does not solve authorization, data minimisation, or the fact that a tool&#39;s response can contain instructions. Those remain yours.</p>
+<h2>What goes wrong, and what to do about it</h2>
+<p><strong>Prompt injection is the one that gets people.</strong> Any text the model reads — an issue description, a PDF, an email, a tool result — can contain instructions. The dangerous combination is well known by now: private data, untrusted content, and an outbound channel. If a run has all three, an attacker who can write a ticket title can often make your agent exfiltrate something.</p>
+<p>The mitigations are architectural, not lexical. Keep untrusted content labelled and out of the system prompt. Do not give a single run both broad read access and an unrestricted send capability. Put a human in front of anything that leaves the trust boundary. And log tool calls with their arguments, because &quot;the agent did something weird&quot; is unanswerable without a trace.</p>
+<p><strong>Authorization is not a prompt.</strong> Saying &quot;only modify projects the user owns&quot; in a system prompt is a suggestion. Checking <code>ctx.actor</code> against the project&#39;s ACL is a control. Every tool call re-checks; nothing is cached across users; scopes are per tool, short-lived, and never stored in the browser.</p>
+<p><strong>Hallucinated arguments are normal.</strong> The model will invent an ID that looks plausible. Schema validation catches shape; it does not catch meaning. Add preconditions to the tool itself: resolve the id, fail with a structured error, and let the loop recover. A tool that returns &quot;project ms_ga not found&quot; is a hundred times more useful than a 500.</p>
+<p><strong>Idempotency and undo are features, not polish.</strong> Every write takes a client-generated key so a retry cannot double-apply. Where the domain allows it, capture the previous state and offer an undo for a bounded window. The ability to reverse an action changes the risk calculus for the entire product.</p>
+<p><strong>Latency is a design constraint.</strong> Separate time-to-first-event from time-to-completion. Users need something meaningful within a second or two — usually the plan — even if the run takes thirty. Stream the plan before the first tool call, run independent reads in parallel, and cap the context you send. Sending the entire page state &quot;just in case&quot; is how you turn a two-second run into a twelve-second one with a bigger bill.</p>
+<p><strong>Errors need a taxonomy.</strong> Model error, transport error, validation error, permission error, and tool error are five different user experiences. Retry only what is safe to retry: reads and idempotent writes. A non-idempotent write that timed out is not a retry, it is an investigation. Surface the partial transcript either way; the user&#39;s next question is always &quot;what did it actually do?&quot;</p>
+<h2>Where this is already worth building</h2>
+<p>The pattern that works is boring and specific: <strong>internal tools, known users, bounded data, reversible actions.</strong></p>
+<ul>
+<li><strong>Operations consoles.</strong> Re-running failed jobs, reconciling records, rotating credentials. The tools are narrow, the users are employees, and an audit trail is a feature rather than a burden.</li>
+<li><strong>Analytics.</strong> &quot;Why did signups drop in the EU last week?&quot; with tool calls to a semantic layer, and a chart rendered through the allowlisted registry. The model writes the query; the warehouse enforces row-level security.</li>
+<li><strong>Support tooling.</strong> Drafting replies with retrieved order data, staged for an agent to send. Here the approval step is the product.</li>
+<li><strong>Developer tools.</strong> The most mature category by far, because the blast radius is a git branch and the feedback loop is a compiler.</li>
+<li><strong>Commerce operations.</strong> Bulk price and inventory changes, where a preview diff and an undo window make the difference between useful and terrifying.</li>
+</ul>
+<p>The pattern that fails is equally specific: high-stakes, irreversible actions, executed on behalf of users who cannot verify the result. Payments, medical changes, destructive infrastructure operations. Not because the models are too weak, but because the verification cost exceeds the time saved.</p>
+<h2>Is this the future of frontend?</h2>
+<p>Partly, and not in the way the demos imply.</p>
+<p>The chat box is probably not the final form. It is the easiest thing to build and the hardest thing to make good, and the products that get this right tend to use language as one input among several — a command palette that understands a sentence, a table where you can describe a filter, a form that fills itself from a document.</p>
+<p>What is durable is the set of primitives: streaming state, tool invocation, approval gates, typed events, and a runtime that survives a refresh. Those are frontend problems. The model is the part you rent.</p>
+<p>The skills that appreciate are unglamorous. Streaming protocols and backpressure. State machines. Schema validation at every boundary. Authorization that lives on the server. Evaluation harnesses, because you cannot snapshot-test a stochastic system — you assert on tool calls and outcomes across a golden set of traces. Accessibility for interfaces that change while you are reading them. And the design system, now doing double duty as the constraint surface that keeps generated output inside your architecture.</p>
+<p>The skills that depreciate are the ones that were already commoditised: wiring a form, writing a fetch hook, plumbing props.</p>
+<p>My prediction, clearly labelled as one: within a few years most serious products will have a goal-oriented command surface, and very few will have full autonomy outside narrow, pre-approved envelopes. The interface gets simpler at the surface and considerably more complex underneath. That is the usual direction of frontend.</p>
+<h2>A roadmap that does not start with a framework</h2>
+<p><strong>Weeks 1–2.</strong> One read-only tool, one model call, a real stream. No chat history, no memory. Get the event union and the buffer handling right; you will reuse them for years.</p>
+<p><strong>Weeks 3–4.</strong> Add schema validation and an error taxonomy. Build the timeline. Make the run survive a refresh by persisting events server-side and replaying them by id.</p>
+<p><strong>Month 2.</strong> Add a write tool behind an approval. Implement idempotency keys and an audit table before you add a second write tool — the second one is where the shortcuts become expensive.</p>
+<p><strong>Month 3.</strong> Wrap one internal system in an MCP server. Restrict it to the scopes you actually need. Test it with a hostile tool response that contains instructions.</p>
+<p><strong>Month 4.</strong> Build an eval set: twenty real requests, ten adversarial ones, assertions on which tools were called and with what arguments. Add cost and latency budgets. Only then consider rung four, and only where a mistake costs minutes rather than money.</p>
+<p>The order matters. Teams that start with autonomy spend the next quarter retrofitting permissions into a system that assumed there were none.</p>
+<h2>Frequently asked questions</h2>
+<p><strong>Is agentic UI just a chatbot with buttons?</strong>
+No. A chatbot produces text and the user acts. An agentic interface produces text <em>and executes tool calls</em>, which is why it needs a gateway, an approval path and an audit trail. The chat box is a UI choice; the loop is the architecture. You can build an agentic interface with no chat at all — a command palette over a data grid is a perfectly good example.</p>
+<p><strong>Do I need to fine-tune a model?</strong>
+Almost never for the UI layer. Most failures come from bad context assembly, missing tools, and unclear schemas, not from insufficient model knowledge. Fix the plumbing first. Fine-tuning enters the picture when you need a consistent output format at volume, and even then schema-constrained generation usually gets you there.</p>
+<p><strong>Should orchestration run in the browser or on the server?</strong>
+On the server, always, for anything with a credential or a side effect. The browser can render events and collect approval; it must not hold provider keys or execute writes. A client-side loop also cannot enforce rate limits, budgets, or permissions, and it disappears when the tab closes.</p>
+<p><strong>Is MCP required to build this?</strong>
+No. It is a convenient, increasingly standard way to expose tools, especially when several hosts should share them. A private internal agent can call your own HTTP endpoints directly with less machinery. Adopt MCP when the integration count grows or when you want third-party hosts to connect without bespoke work.</p>
+<p><strong>How do I stop the agent from doing something destructive?</strong>
+Three layers: default-deny tool allowlists, server-side authorization on every call, and an approval keyed to a specific call with a visible effect preview. Add idempotency keys and, where the domain allows, an undo window. Never rely on a prompt instruction for safety; prompts are suggestions, code is a control.</p>
+<p><strong>Will this replace traditional UI patterns?</strong>
+No. Tables, forms and navigation remain the fastest way to do most things, and they are far cheaper to build, test and make accessible. Agentic layers are worth adding where the task is multi-step, spans systems, and benefits from a preview. Replacing a good form with a conversation is usually a downgrade.</p>
+<h2>The line worth holding</h2>
+<p>The interfaces that will matter are not the ones that act the most. They are the ones where a user can see what is about to happen, stop it, and understand what happened after.</p>
+<p>That is the whole design brief, and it is old advice: make the system&#39;s state visible, keep the user&#39;s hand on the lever, and never let automation outrun comprehension. What is new is that the state is now a plan, the lever is an approval, and the comprehension problem is a language model that is confidently wrong one time in twenty.</p>
+<p>Build for that. Autonomy is the easy part to demo and the hardest part to earn.</p></div><ul class="post__tags" aria-label="Tags"><li class="tag">Agentic UI</li><li class="tag">MCP</li><li class="tag">React</li><li class="tag">AI agents</li><li class="tag">Frontend architecture</li></ul></article><nav class="post-nav" aria-label="More posts"><a class="post-nav__link" href="/blog/what-vibe-coding-actually-changes/"><span class="idx">Older</span><span class="post-nav__title">What vibe coding actually changes</span></a></nav><p class="post__back"><a href="/blog/">← All notes</a></p></div></main><footer class="site-footer wrap"><div class="site-footer__grid"><p class="colophon">© <!-- -->2026<!-- --> <!-- -->Dikshant Patodia<!-- -->. Set in Fraunces, Inter, and JetBrains Mono. Built with Vite, React, and Tailwind CSS, and served as static files from GitHub Pages. No trackers, no analytics, no cookies.</p><nav class="footer-links" aria-label="Footer"><a href="/#top">Back to top</a><a href="/blog/">Blog</a><a href="https://github.com/dikshantpatodia" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://linkedin.com/in/dikshantpatodia" target="_blank" rel="noreferrer noopener">LinkedIn</a><a href="mailto:dikshantpatodia@gmail.com">Email</a></nav></div></footer></div>
+  </body>
+</html>
