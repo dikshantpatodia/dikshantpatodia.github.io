@@ -31,3 +31,5 @@ Across the products I have worked on, the shape of the win was the same every ti
 ## Make it a gate, not an aspiration
 
 A budget that lives in a slide is a wish. A budget that fails a build is a decision. I would rather defend a number in review than explain a regression in a postmortem.
+
+Once the architecture is right, [the runtime techniques worth reaching for](/blog/javascript-performance-optimization/) — debouncing, memoisation, virtualisation, leaks — are what close the remaining gap.

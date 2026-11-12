@@ -29,3 +29,5 @@ The failure mode is a distributed monolith — all the boundaries of micro front
 1. Write down who needs to deploy independently, and how often.
 2. Count the release collisions that actually happened, not the ones imagined.
 3. Only then draw the boundary — and keep it small.
+
+If you have decided to pay the cost, [the practical guide to Module Federation, shared React and contract versioning](/blog/micro-frontends-scaling-react/) covers what breaks first.
