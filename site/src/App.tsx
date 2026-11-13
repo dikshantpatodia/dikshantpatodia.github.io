@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/SiteHeader'
 import { SiteFooter } from '@/components/SiteFooter'
+import { NoticeBar } from '@/components/NoticeBar'
 import { EasterEgg } from '@/components/ui/EasterEgg'
 import { BlogCategoryPage } from '@/pages/BlogCategory'
 import { BlogIndex } from '@/pages/BlogIndex'
@@ -22,6 +23,7 @@ export function App({ pathname }: { pathname: string }) {
         Skip to content
       </a>
       <SiteHeader currentPath={route.path} />
+      <NoticeBar currentSlug={route.name === 'post' ? route.slug : undefined} />
       <main id="main">
         {route.name === 'home' ? <Home /> : null}
         {route.name === 'blog' ? <BlogIndex /> : null}

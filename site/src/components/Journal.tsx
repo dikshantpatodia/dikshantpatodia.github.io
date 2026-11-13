@@ -1,10 +1,13 @@
 import { ArrowRight } from 'lucide-react'
 import { PostList } from './PostList'
 import { SectionHead } from './ui/SectionHead'
-import { blogIndexHref, latestPosts } from '@/data/blog'
+import { blogIndexHref, blogPosts, latestPosts } from '@/data/blog'
 
 export function Journal() {
-  const posts = latestPosts(3)
+  // The banner above the fold already carries the three newest posts, so this
+  // section continues the archive instead of repeating them on the same page.
+  const older = blogPosts.slice(3, 6)
+  const posts = older.length > 0 ? older : latestPosts(3)
 
   return (
     <section className="section wrap" id="journal" aria-labelledby="journal-title">

@@ -25,7 +25,10 @@ import { renderOgPng } from './og-core.mjs'
 const ORIGIN = 'https://www.dikshantpatodia.in'
 const SITE_NAME = 'Dikshant Patodia'
 const DEFAULT_DESCRIPTION =
-  'Dikshant Patodia is a senior frontend engineer who architects systems that stay fast under load, scale across teams, and hold up in production — micro frontends, performance, design systems, and testing.'
+  'Dikshant Patodia is a senior frontend engineer who builds interfaces that stay fast under load — micro frontends, performance, design systems and testing.'
+
+const BLOG_DESCRIPTION =
+  'Short essays on architecture, performance, design systems, and testing — the frontend decisions that are easy to get wrong.'
 
 const dist = fileURLToPath(new URL('../dist', import.meta.url))
 const contentDir = fileURLToPath(new URL('../content/blog', import.meta.url))
@@ -141,6 +144,24 @@ const PERSON = {
   ],
 }
 
+/**
+ * The three newest posts, advertised on the home page. Mirrors the banner's
+ * markup so search engines and the visible page describe the same list.
+ */
+const latestItemList = (allPosts) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Latest articles',
+  itemListOrder: 'https://schema.org/ItemListOrderDescending',
+  numberOfItems: Math.min(3, allPosts.length),
+  itemListElement: allPosts.slice(0, 3).map((post, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: post.title,
+    url: url(`/blog/${post.slug}`),
+  })),
+})
+
 const routes = [
   {
     path: '/',
@@ -152,7 +173,7 @@ const routes = [
         description: DEFAULT_DESCRIPTION,
         canonical: `${ORIGIN}/`,
         image: `${ORIGIN}/og.png`,
-        structured: [PERSON],
+        structured: [PERSON, latestItemList(posts)],
       }),
   },
   {
@@ -162,8 +183,7 @@ const routes = [
     seo: () =>
       head({
         title: `Blog — notes on frontend engineering | ${SITE_NAME}`,
-        description:
-          'Short essays on architecture, performance, design systems, and testing — the frontend decisions that are easy to get wrong.',
+        description: BLOG_DESCRIPTION,
         canonical: url('/blog'),
         image: `${ORIGIN}/og.png`,
         structured: [
@@ -172,7 +192,7 @@ const routes = [
             '@type': 'Blog',
             name: `Notes on frontend engineering — ${SITE_NAME}`,
             url: url('/blog'),
-            description: DEFAULT_DESCRIPTION,
+            description: BLOG_DESCRIPTION,
             blogPost: posts.map((post) => ({
               '@type': 'BlogPosting',
               headline: post.title,
