@@ -19,7 +19,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { loadPosts } from './blog-core.mjs'
+import { loadContent } from './content-source.mjs'
 import { renderOgPng } from './og-core.mjs'
 
 const ORIGIN = 'https://www.dikshantpatodia.in'
@@ -31,10 +31,9 @@ const BLOG_DESCRIPTION =
   'Short essays on architecture, performance, design systems, and testing — the frontend decisions that are easy to get wrong.'
 
 const dist = fileURLToPath(new URL('../dist', import.meta.url))
-const contentDir = fileURLToPath(new URL('../content/blog', import.meta.url))
 
 const { render } = await import('../dist-ssr/entry-server.js')
-const posts = await loadPosts(contentDir)
+const posts = await loadContent()
 
 const categories = [...new Map(posts.map((post) => [post.categorySlug, post.category])).entries()]
   .map(([slug, name]) => ({ slug, name }))

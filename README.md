@@ -1,27 +1,24 @@
 # dikshantpatodia.github.io
 
-Portfolio of **Dikshant Patodia** - Senior Frontend Engineer. A deliberately
+Portfolio of **Dikshant Patodia** — Senior Frontend Engineer. A deliberately
 minimal, typography-led studio site, not a résumé: editorial case studies, an
 interactive engineering playground, and a blog of short engineering notes.
 
 Live at **https://www.dikshantpatodia.in** (GitHub Pages, `master` branch root).
 
-## Writing a blog post
+## Quick start
 
-Drop a Markdown file into `site/content/blog/`. The filename becomes the URL:
-`when-micro-frontends-are-worth-their-complexity.md` →
-`/blog/when-micro-frontends-are-worth-their-complexity`.
-
-```markdown
----
-title: When micro frontends are worth their complexity
-date: 2026-10-05
-updated: 2026-10-12
-category: Architecture
-summary: One or two sentences used for the listing and meta description.
-tags: Micro frontends, Architecture, Module Federation
----
-
-Body in Markdown. Headings, lists, links, quotes, images, and fenced code
-blocks are all supported.
+```bash
+cd site
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # prerender into site/dist
+npm run deploy    # build and publish to the repo root
 ```
+
+## Documentation
+
+Everything else — repository layout, the build and prerender pipeline,
+deployment, writing posts, backend integration, SEO, performance, design
+tokens, accessibility, configuration, and project conventions — lives in
+**[DOCUMENTATION.md](./DOCUMENTATION.md)**.

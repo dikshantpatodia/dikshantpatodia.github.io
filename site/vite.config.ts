@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { loadPosts } from './scripts/blog-core.mjs'
+import { loadContent } from './scripts/content-source.mjs'
 
 const blogDir = fileURLToPath(new URL('./content/blog', import.meta.url))
 
@@ -23,7 +23,7 @@ function blogContent(): Plugin {
     },
     async load(id) {
       if (id !== resolvedId) return undefined
-      const posts = await loadPosts(blogDir)
+      const posts = await loadContent()
       return `export const posts = ${JSON.stringify(posts)}`
     },
     configureServer(server) {
