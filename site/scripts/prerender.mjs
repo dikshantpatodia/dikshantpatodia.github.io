@@ -74,6 +74,16 @@ const latestActivity = (list) =>
  */
 const url = (path) => (path === '/' ? `${ORIGIN}/` : `${ORIGIN}${path.replace(/\/+$/, '')}/`)
 
+/**
+ * Search results cut titles at roughly 60 characters. Keep the brand suffix
+ * when the whole string fits; for long headlines drop it rather than lose the
+ * tail of the title to an ellipsis.
+ */
+const pageTitle = (title) => {
+  const branded = `${title} | ${SITE_NAME}`
+  return branded.length <= 60 ? branded : title
+}
+
 /** Builds the tags that go between the <!--seo--> markers. */
 function head({ title, description, canonical, type = 'website', image, published, modified, structured }) {
   const tags = [
@@ -89,6 +99,7 @@ function head({ title, description, canonical, type = 'website', image, publishe
     `<meta property="og:description" content="${escapeHtml(description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
     `<meta property="og:image" content="${image}" />`,
+    `<meta property="og:image:alt" content="${escapeHtml(title)}" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
   ]
@@ -106,6 +117,7 @@ function head({ title, description, canonical, type = 'website', image, publishe
     `<meta name="twitter:title" content="${escapeHtml(title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
+    `<meta name="twitter:image:alt" content="${escapeHtml(title)}" />`,
   )
 
   for (const item of structured) {
@@ -238,7 +250,7 @@ const routes = [
     lastmod: updatedOf(post),
     seo: () =>
       head({
-        title: `${post.title} | ${SITE_NAME}`,
+        title: pageTitle(post.title),
         description: post.summary,
         canonical: url(`/blog/${post.slug}`),
         type: 'article',

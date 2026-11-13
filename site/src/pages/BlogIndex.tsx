@@ -29,7 +29,7 @@ export function BlogIndex() {
         ))}
       </nav>
 
-      <PostList posts={blogPosts} />
+      <PostList posts={blogPosts} headingLevel={2} />
     </div>
   )
 }

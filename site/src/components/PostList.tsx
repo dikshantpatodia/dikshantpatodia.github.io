@@ -6,12 +6,20 @@ interface PostListProps {
   posts: BlogPost[]
   /** `teaser` trims each row to title, category and date for the home page. */
   variant?: 'full' | 'teaser'
+  /**
+   * Heading rank for each title. Blog index and category pages sit directly
+   * under their `h1`, so they use 2; the home page nests the list under a
+   * section heading and keeps 3.
+   */
+  headingLevel?: 2 | 3
 }
 
-export function PostList({ posts, variant = 'full' }: PostListProps) {
+export function PostList({ posts, variant = 'full', headingLevel = 3 }: PostListProps) {
   if (posts.length === 0) {
     return <p className="posts__empty">Nothing published here yet.</p>
   }
+
+  const Heading = headingLevel === 2 ? 'h2' : 'h3'
 
   return (
     <ol className="posts">
@@ -22,7 +30,7 @@ export function PostList({ posts, variant = 'full' }: PostListProps) {
               <span className="post-item__cat">{post.category}</span>
               <span className="idx">{formatDate(post.date)}</span>
             </span>
-            <h3 className="post-item__title">{post.title}</h3>
+            <Heading className="post-item__title">{post.title}</Heading>
             {variant === 'full' ? <span className="post-item__summary">{post.summary}</span> : null}
             <span className="post-item__more">
               {post.minutes} min read

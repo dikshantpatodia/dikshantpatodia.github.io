@@ -44,7 +44,7 @@ export function BlogCategoryPage({ categorySlug }: { categorySlug: string }) {
         ))}
       </nav>
 
-      <PostList posts={posts} />
+      <PostList posts={posts} headingLevel={2} />
     </div>
   )
 }

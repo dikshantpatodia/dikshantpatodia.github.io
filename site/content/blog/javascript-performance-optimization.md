@@ -2,7 +2,7 @@
 title: "JavaScript Performance Optimization: Building Faster Web Applications"
 date: 2026-11-02
 category: Performance
-summary: Debounce what, memoise where? A diagnosis-first guide to debouncing, throttling, memoisation, lazy loading, delegation and the leaks that survive every other fix.
+summary: Debounce what, memoise where? A diagnosis-first guide to debouncing, throttling, memoisation, lazy loading, delegation and the leaks that outlive other fixes.
 tags: JavaScript, Performance, Core Web Vitals, React
 ---
 
