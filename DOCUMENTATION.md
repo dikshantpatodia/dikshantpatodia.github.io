@@ -12,6 +12,7 @@ write for it, and the rules it is held to. For a one-paragraph overview, see
 - [Build pipeline](#build-pipeline)
 - [Deploying](#deploying)
 - [Writing content](#writing-content)
+- [New-post alerts](#new-post-alerts)
 - [Backend integration](#backend-integration)
 - [SEO](#seo)
 - [Performance](#performance)
@@ -64,7 +65,7 @@ site/                      Vite application (the source of truth)
     data/                  Typed site copy, post helpers, shared types
     lib/                   Head sync, API client, resource hook, class helper
     styles/index.css       Tokens, base styles, every component style
-  public/                  Files copied verbatim into the build (og.png, icons)
+  public/                  Files copied verbatim into the build (og.png, icons, sw.js)
   dist/                    Client build output (gitignored)
   dist-ssr/                Server bundle used only by prerender (gitignored)
   .env.example             Every supported environment variable
@@ -212,6 +213,40 @@ Behaviour worth knowing:
 - Every post gets its own social card automatically.
 - New posts appear in the header notice bar, the home banner, and the journal
   archive without further edits.
+
+## New-post alerts
+
+Readers can opt in to browser notifications from the button under the blog
+index header. Nothing is requested automatically; permission is asked for on
+that click only.
+
+How it works today, without a server:
+
+1. The reader clicks **Notify me of new notes** and grants permission.
+2. `public/sw.js` is registered and the newest post's date is stored in
+   `localStorage` as "seen".
+3. On later visits, `NewPostAlerts` (mounted on every page) compares the newest
+   post with that stored date. If it is newer, the service worker raises a
+   system notification; clicking it opens the article.
+4. **Turn off** stops alerts locally without revoking the browser permission.
+
+Files: `site/src/lib/notifications.ts`, `site/src/components/NotifyToggle.tsx`,
+`site/src/components/NewPostAlerts.tsx`, `site/public/sw.js`.
+
+### Honest limitations
+
+The site is static, so **there is no push sender**: notifications appear the next
+time the reader visits the site, not the moment a post ships. True background
+push needs a small endpoint that stores subscriptions and sends with VAPID keys
+(and, on iOS, a reader who has added the site to the home screen). The service
+worker already handles `push` and `notificationclick`, so adding that endpoint
+later requires no change to the client beyond subscribing with the public key.
+
+The worker deliberately has **no fetch handler and no cache** — pages stay
+static and fingerprinted, and a caching worker would only risk stale content.
+
+Storage is a single `localStorage` key (`dp:blog-alerts:v1`): a mute flag and
+the last seen post. No account, no third party, no tracking.
 
 ## Backend integration
 

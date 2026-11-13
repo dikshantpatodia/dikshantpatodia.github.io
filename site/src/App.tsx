@@ -1,6 +1,7 @@
 import { SiteHeader } from '@/components/SiteHeader'
 import { SiteFooter } from '@/components/SiteFooter'
 import { NoticeBar } from '@/components/NoticeBar'
+import { NewPostAlerts } from '@/components/NewPostAlerts'
 import { EasterEgg } from '@/components/ui/EasterEgg'
 import { BlogCategoryPage } from '@/pages/BlogCategory'
 import { BlogIndex } from '@/pages/BlogIndex'
@@ -24,6 +25,7 @@ export function App({ pathname }: { pathname: string }) {
       </a>
       <SiteHeader currentPath={route.path} />
       <NoticeBar currentSlug={route.name === 'post' ? route.slug : undefined} />
+      <NewPostAlerts />
       <main id="main">
         {route.name === 'home' ? <Home /> : null}
         {route.name === 'blog' ? <BlogIndex /> : null}

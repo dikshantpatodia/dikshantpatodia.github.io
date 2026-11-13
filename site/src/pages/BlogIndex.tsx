@@ -1,3 +1,4 @@
+import { NotifyToggle } from '@/components/NotifyToggle'
 import { PostList } from '@/components/PostList'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { blogCategories, blogPosts, categoryHref } from '@/data/blog'
@@ -14,6 +15,7 @@ export function BlogIndex() {
           Short essays on the decisions that are easy to get wrong — architecture, performance,
           design systems, and testing. Written for review, not for volume.
         </p>
+        <NotifyToggle />
       </header>
 
       <nav className="cats" aria-label="Filter by category">

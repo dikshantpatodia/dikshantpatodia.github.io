@@ -22,9 +22,6 @@ export function BlogCategoryPage({ categorySlug }: { categorySlug: string }) {
       <header className="blog-head">
         <span className="eyebrow">Category</span>
         <h1 className="blog-head__title">{category.name}</h1>
-        <p className="blog-head__lede">
-          {posts.length} {posts.length === 1 ? 'note' : 'notes'} filed under {category.name}.
-        </p>
       </header>
 
       <nav className="cats" aria-label="Filter by category">
