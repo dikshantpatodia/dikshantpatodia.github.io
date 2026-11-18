@@ -30,6 +30,23 @@ export function latestPosts(count: number): BlogPost[] {
   return blogPosts.slice(0, count)
 }
 
+/** The post pinned with `featured: true`; the newest post when none is pinned. */
+export function featuredPost(): BlogPost | undefined {
+  return blogPosts.find((post) => post.featured) ?? blogPosts[0]
+}
+
+/**
+ * The home banner: the featured post leads, then the newest posts that are not
+ * already listed. With no `featured` flag this is simply the newest `count`.
+ */
+export function homeHighlights(count: number): BlogPost[] {
+  const lead = featuredPost()
+  if (!lead) return []
+
+  const rest = blogPosts.filter((post) => post.slug !== lead.slug)
+  return [lead, ...rest].slice(0, count)
+}
+
 /** Previous (older) and next (newer) posts, relative to `slug`. */
 export function neighbours(slug: string): { older?: BlogPost; newer?: BlogPost } {
   const index = blogPosts.findIndex((post) => post.slug === slug)

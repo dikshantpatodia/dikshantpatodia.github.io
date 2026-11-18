@@ -1,6 +1,7 @@
 ---
 title: What vibe coding actually changes
 date: 2026-10-25
+featured: true
 category: AI
 summary: The prompt is not the work. Vibe coding moves the expensive decisions earlier — intent, constraints, review — and leaves syntax where it belongs.
 tags: AI coding, Cursor, GitHub Copilot, v0

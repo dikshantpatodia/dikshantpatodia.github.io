@@ -57,6 +57,12 @@ function asTags(value) {
   return []
 }
 
+function asBoolean(value) {
+  if (typeof value === 'boolean') return value
+  if (typeof value === 'number') return value !== 0
+  return /^(true|yes|on|1)$/i.test(String(value ?? '').trim())
+}
+
 function asCategory(value) {
   if (value && typeof value === 'object') {
     const name = String(value.name ?? value.title ?? 'Uncategorised').trim()
@@ -138,6 +144,9 @@ export function normalizePost(input, index = 0) {
 
   const updated = pick(input, ['updated', 'updatedAt', 'updated_at', 'modifiedAt', 'modified_at'])
   if (updated !== undefined) post.updated = asDate(updated, where)
+
+  const featured = pick(input, ['featured', 'pinned', 'highlight'])
+  if (featured !== undefined && asBoolean(featured)) post.featured = true
 
   if (!post.slug) throw new ContentError(`${where} ("${title}"): could not derive a slug; send one explicitly`)
 

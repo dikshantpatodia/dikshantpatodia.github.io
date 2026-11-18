@@ -101,6 +101,8 @@ export interface BlogPost {
   date: string
   /** ISO date of the last revision. Rendered as "Updated …" when newer than `date`. */
   updated?: string
+  /** Pins the post to the front of the home banner (`featured: true`). */
+  featured?: boolean
   category: string
   categorySlug: string
   summary: string

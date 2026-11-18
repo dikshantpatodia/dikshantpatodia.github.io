@@ -196,6 +196,7 @@ blocks are all supported.
 | `title` | yes | Visible heading and document title |
 | `date` | yes | `YYYY-MM-DD`; drives ordering and `datePublished` |
 | `updated` | no | Enables "Updated …" and `dateModified` |
+| `featured` | no | `true` pins the post to the front of the home banner |
 | `category` | yes | Category pages are generated from the values in use |
 | `summary` | yes | Listing copy and meta description; keep it under ~160 characters |
 | `tags` | no | Comma-separated; used in JSON-LD keywords |
@@ -212,7 +213,10 @@ Behaviour worth knowing:
   blocks.
 - Every post gets its own social card automatically.
 - New posts appear in the header notice bar, the home banner, and the journal
-  archive without further edits.
+  archive without further edits. The home banner leads with the post marked
+  `featured: true`, then the newest posts; the journal continues from there.
+  The notice bar shows that same featured note on every page (`Featured`), and
+  the newest note when nothing is pinned (`New`).
 
 ## New-post alerts
 

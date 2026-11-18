@@ -1738,6 +1738,21 @@
   align-items: center;
   gap: 0.5rem;
 }
+/* The pinned note leads the band, so it carries the accent edge and a label. */
+.latest-card--featured {
+  border-color: var(--color-accent);
+}
+.latest-card--featured:hover,
+.latest-card--featured:focus-visible {
+  border-color: var(--color-accent);
+}
+.latest-card__flag {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
 .latest-card__cat {
   font-family: var(--font-mono);
   font-size: 0.5625rem;

@@ -69,11 +69,15 @@ function toPost(fileName, raw) {
   // it matches the publication date, so it only ever signals a real change.
   const revised = (data.updated ?? data.modified ?? '').trim()
 
+  // `featured: true` pins a post to the front of the home banner.
+  const featured = /^(true|yes|on|1)$/i.test(String(data.featured ?? '').trim())
+
   return {
     slug,
     title: data.title ?? slug,
     date,
     updated: revised && revised !== date ? revised : undefined,
+    featured: featured || undefined,
     category,
     categorySlug: slugify(category),
     summary: data.summary ?? '',

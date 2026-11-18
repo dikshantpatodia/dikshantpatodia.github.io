@@ -1,15 +1,16 @@
 import { ArrowRight } from 'lucide-react'
-import { blogIndexHref, formatDate, latestPosts, postHref } from '@/data/blog'
+import { blogIndexHref, formatDate, homeHighlights, postHref } from '@/data/blog'
 
 /**
- * Announcement band for the home page: the three newest posts.
- *
- * Rendered on the server as real anchors, so the links are crawlable and work
- * without JavaScript. No images, so there is nothing to shift after paint.
+ * Announcement band for the home page: the featured post, then the newest
+ * ones. Rendered on the server as real anchors, so the links are crawlable and
+ * work without JavaScript. No images, so there is nothing to shift after paint.
  */
 export function LatestPosts() {
-  const posts = latestPosts(3)
+  const posts = homeHighlights(3)
   if (posts.length === 0) return null
+
+  const leadSlug = posts.find((post) => post.featured)?.slug
 
   return (
     <section className="latest wrap" aria-labelledby="latest-title">
@@ -31,8 +32,16 @@ export function LatestPosts() {
         <ol className="latest__list">
           {posts.map((post) => (
             <li key={post.slug}>
-              <a className="latest-card" href={postHref(post.slug)}>
+              <a
+                className={
+                  post.slug === leadSlug ? 'latest-card latest-card--featured' : 'latest-card'
+                }
+                href={postHref(post.slug)}
+              >
                 <span className="latest-card__meta">
+                  {post.slug === leadSlug ? (
+                    <span className="latest-card__flag">Featured</span>
+                  ) : null}
                   <span className="latest-card__cat">{post.category}</span>
                   <time className="idx" dateTime={post.date}>
                     {formatDate(post.date)}
